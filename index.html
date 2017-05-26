@@ -12,55 +12,161 @@
 
 </head>
 <body>
-	<!-- <nav>
-	    <div class="nav-wrapper">
-	      <a href="#!" class="brand-logo"><img id="logo" src="img/logo.png"><span>PROMOS</span></a>
-	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-	      <ul class="right hide-on-med-and-down">
-	        <li><a href="sass.html">Registrarse</a></li>
-	        <li><a href="badges.html">Iniciar Sesión</a></li>
-	      </ul>
-			
-		<ul id="nav-mobile" class="side-nav">
-	        <li><a href="sass.html">Registrarse</a></li>
-	        <li><a href="badges.html">Iniciar Sesión</a></li>
-	     </ul>
-
-	    </div>
-	</nav> -->
-
-	<nav>
-		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo"><img id="logo" src="img/logo.png"><span>PROMOS</span></a>
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-			<ul class="right hide-on-med-and-down">
-			  	<li id="search-icon"><a href="#"><i class="material-icons">search</i></a></li>
-				<li><a href="#">Registrarse</a></li>
-	        	<li><a href="#">Iniciar Sesión</a></li>
-			</ul>
-			<ul class="side-nav" id="mobile-demo">
-				<li><a href="#">Registrarse</a></li>
-	        	<li><a href="#">Iniciar Sesión</a></li>
-	        	<li><a href="#"><i class="material-icons">search</i></a></li>
-			</ul>
-		</div>
-	</nav>
-	<div class="container-fluid">
-
-	<div class="row">
-		<div class="search hide-on-med-and-down col l12">
-
-			<div class="input-field">
-				 <i class="material-icons prefix">search</i>
-          		<input id="icon_prefix" type="text" class="validate" placeholder="Buscar...">
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo"><img id="logo" src="img/logo.png"><span>PROMOS</span></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+				  	<li id="search-icon"><a href="#"><i class="material-icons">search</i></a></li>
+					<li><a href="#">Registrarse</a></li>
+		        	<li><a href="#">Iniciar Sesión</a></li>
+				</ul>
 			</div>
-			
+		</nav> <!-- FIN nav -->
+	</div>
+
+	<ul class="side-nav" id="mobile-demo">
+		<li><a href="#">Registrarse</a></li>
+    	<li><a href="#">Iniciar Sesión</a></li>
+    	<li><a href="#"><i class="material-icons white-text">search</i></a></li>
+	</ul>
+	
+	<div class="container-fluid">
+	
+	<!-- Barra de busqueda -->
+	<div class="search row">
+		<div class="hide-on-med-and-down col l12">
+			<form  method="GET">
+				<div class="input-field">
+					 <i class="material-icons prefix">search</i>
+	          		<input id="icon_prefix" type="text" class="validate" placeholder="Buscar...">
+	          		<input type="submit" hidden name="" value="LOL">
+				</div>
+			</form>
 		</div>
 	</div>
-		
+	
+	<!-- SLIDER -->
+		<div class="carousel carousel-slider center" data-indicators="true">
+			<!-- <img class="carousel-item" src="img/logo.png"> -->
+		    <div class="carousel-item blue white-text" href="#one!">
+		      <h2>First Panel</h2>
+		      <p class="white-text">This is your first panel</p>
+		    </div>
+		    <div class="carousel-item blue white-text" href="#two!">
+		      <h2>Second Panel</h2>
+		      <p class="white-text">This is your second panel</p>
+		    </div>
+		    <div class="carousel-item blue white-text" href="#three!">
+		      <h2>Third Panel</h2>
+		      <p class="white-text">This is your third panel</p>
+		    </div>
+		    <div class="carousel-item blue white-text" href="#four!">
+		      <h2>Fourth Panel</h2>
+		      <p class="white-text">This is your fourth panel</p>
+		    </div>
+		</div>
+		<!-- Barra de tabs -->
+		<nav class="nav-extended">
+			<div class="nav-content">
+		      <ul class="tabs tabs-transparent center-align">
+		        <li class="tab"><a href="#test1">Servicios</a></li>
+		        <li class="tab"><a class="active" href="#test2">Productos</a></li>
+		        <li class="tab"><a href="#test4">Tecnología</a></li>
+		      </ul>
+    		</div>
+		</nav>
+	</div> <!-- FIN container-fluid -->
+	<div class="container-fluid">
+		<div id="cards-container" class="row col m12">
+			
+			<!-- Colunma 1 -->
+			<div class="row col s12 m6 columna-1">
+
+				<!-- Card descuento GRANDE-->
+				<div class="col s12 m12">
+		          <div class="card">
+
+		            <div class="card-image">
+
+		              <img src="img/audifonos.jpg">
+		              <span class="sale">-40%</span>
+		            </div>
+		        
+		            <div class="action">
+			         
+	              		<a class="waves-effect waves-light btn"><span>Audifonos Sony</span><i class="material-icons right">keyboard_arrow_right</i></a>
+		            </div>
+		          </div>
+		        </div>
+
+
+			</div> <!-- FIn columna 1 -->
+			
+			<!-- Colunma 2 -->
+			<div class="row col s12 m6 columna-2">
+
+				<!-- Card descuento PEQUEÑA-->
+				<div class="col s12 m6 ">
+		          <div class="card small-card">
+
+		            <div class="card-image">
+
+		              <img src="img/audifonos.jpg">
+		              <span class="sale">-40%</span>
+		            </div>
+		        
+		            <div class="action">
+			         
+	              		<a class="waves-effect waves-light btn"><span class="truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
+		            </div>
+		          </div>
+		        </div>
+				
+				<!-- Card descuento PEQUEÑA-->
+				<div class="col s12 m6 ">
+		          <div class="card small-card">
+
+		            <div class="card-image">
+
+		              <img src="img/audifonos.jpg">
+		              <span class="sale">-40%</span>
+		            </div>
+		        
+		            <div class="action">
+			         
+	              		<a class="waves-effect waves-light btn"><span class="truncate">Audifonos Sony manos libres con increíble lljhjhkjhkjhkjhkjhkjh</span><i class="material-icons right">keyboard_arrow_right</i></a>
+		            </div>
+		          </div>
+		        </div>
+				
+				<!-- Card descuento GRANDE-->
+				<div class="col s12 m12">
+		          <div class="card">
+
+		            <div class="card-image">
+
+		              <img src="img/audifonos.jpg">
+		              <span class="sale">-40%</span>
+		            </div>
+		        
+		            <div class="action">
+			         
+	              		<a class="waves-effect waves-light btn"><span>Audifonos Sony</span><i class="material-icons right">keyboard_arrow_right</i></a>
+		            </div>
+		          </div>
+		        </div>
+				
+
+
+			</div><!-- FIn columna 2 -->
+	      
+
+
+		</div>
 	</div>
-
-
+	
 	
 
 	<!-- SCRIPTS -->

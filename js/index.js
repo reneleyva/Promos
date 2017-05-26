@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
 	 $('.button-collapse').sideNav();
+	 $('.carousel.carousel-slider').carousel({fullWidth: true});
 
 	 var flag = false; 
 	 $('#search-icon').click(function(e) {
