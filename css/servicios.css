@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body{
+  background: #eef2f3; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient( top, #8e9eab,#eef2f3); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #8e9eab,#eef2f3); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #8e9eab,#eef2f3); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #8e9eab,#eef2f3); /* Standard syntax */
+}
+body{
+	background-color: gray;
+}
+.back{
+	margin-left: 6% !important;
+	font-size: 100% !important;
+}
+
+.fixed-action-btn ul a.btn-floating{
+	/*transform: scaleY(1) scaleX(1) translateY(300px) translateX(0px) !important;*/
+}
+
+.fixed-action-btn ul {
+   bottom: -255px !important;
+}
+
+.col.s12.m12{
+	margin-top: 15%;
+}
+.imagen-servicio{
+    margin-top: -20%;
+}
+
+img.responsive-img, video.responsive-video {
+    max-width: 40% !important;
+}
+
+.button-redes{
+	position: relative;
+    height: 30px;
+    display: inline;
+    float: right;
+}
+.button-like{
+	position: absolute; 
+	/*right: 24px;*/
+}
+.container-card{
+	width: 95%;
+    margin: auto;
+}
+
+h3{
+    display: inline-block;
+    margin: 5% 5%;
+    vertical-align: top;
+}
+
+h5{
+	display: block;
+    margin-top: 5%;
+}
+.button-obtener{
+	display: inline-block;
+    float: right;
+}
+.card-panel span{
+	display: inline-block;
+    margin-top: 5%;
+}
+
+.fi{
+	font-size: 20px;
+    font-weight: 100;
+    font-family: 'Lato', sans-serif;
+
+}
+.descuento{
+	float:right;
+}
+
+#map {
+	height: 400px;
+}
+.carrusel-style{
+	height: 464.373px;
+    display: inline-block;
+}
+
+
+
