@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Registrarse</title>
+	<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="css/navbar-visitor.css">
+	<link rel="stylesheet" href="css/registrarse-style.css">
+</head>
+<body>
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="index.html" class="brand-logo"><img id="logo" src="img/logo.png"><span>PROMOS</span></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+				  	<li id="search-icon"><a href="#"><i class="material-icons">search</i></a></li>
+					<li ><a href="registrarse.html">Registrarse</a></li>
+		        	<li class="active"><a href="#">Iniciar Sesión</a></li>
+				</ul>
+			</div>
+		</nav> <!-- FIN nav -->
+	</div>
+
+	<ul class="side-nav" id="mobile-demo">
+		<li><a href="registrarse.html">Registrarse</a></li>
+    	<li><a href="iniciarSesion.html">Iniciar Sesión</a></li>
+    	<li><a href="#"><i class="material-icons white-text">search</i></a></li>
+	</ul>
+
+
+	<div class="container">
+		<div class="row">
+			<!-- FORMULARIO Inicio -->
+			<form action="" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
+				<h3>Iniciar Sesión</h3>
+				<button class="loginBtn loginBtn--google">
+				  Iniciar Sesión con Google
+				</button>
+				<button class="loginBtn loginBtn--facebook">
+				  Iniciar Sesión con Facebook
+				</button>
+				<div id='correo-existe' class='form-control err-msg'>Error.</div><br>
+				<label for="correo">Correo</label><br>
+				<input id="correo" required type="email" name="correo" placeholder="john@mail.com" class="form-control">
+
+			    <br><label for="password">Contraseña</label><br>
+				<input id="password" required type="password" name="password" value="" placeholder="" class="form-control">
+				<button id="enviar" type="submit" class="btn btn-default">Enviar</button><br>
+				<p>¿No tienes cuenta? <a href="registrarse.html" title="">Registrarse</a></p>
+			</form>	
+		</div>
+	</div>
+
+</body>
+</html>
