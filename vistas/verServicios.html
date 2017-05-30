@@ -65,9 +65,9 @@
               </div>
               <div class="row grid-elementos">
                 <!--Titulo del producto o servicio-->
-                <div class="col s6"><h3>Audifonos</h3></div>
+                <div class="col m6 s12"><h3>Audifonos</h3></div>
                 <!--Descuento-->
-                <div class="col s6"><h3 class="descuento">-50%</h3></div>
+                <div class="col m6 s12"><h3 class="descuento">-50%</h3></div>
               </div>
               <!--Botón para abrir el pop up-->
               <a class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" href="#0"><i class="material-icons right">cloud</i>button</a>
@@ -87,6 +87,7 @@
               </div>
               <!--Mapa del servicio-->
               <div id="map"></div>
+
             </div>
           </div>
         </div>
@@ -98,58 +99,61 @@
                 <div class="cd-popup-container">
                   <div class="banda">
                     <div class="pop-contenedor">
-                      <img class="imagen-servicio z-depth-3 responsive-img" src="../img/audifonos.jpg">
+                      <img class="imagen-servicio imagen-servicio-popup z-depth-3 responsive-img" src="../img/audifonos.jpg">
                     <div class="row grid-elementos">
                       <!--Titulo del producto o servicio-->
-                      <div class="col s6"><h3>Audifonos</h3></div>
-                      <!--Descuento-->
-                      <div class="col s6"><h3 class="descuento">-50%</h3></div>
+                      <h3>Audifonos</h3>
                     </div>
                     </div>
                   </div>
                   <div class="row contenedor-form">
-                      <form class="col s12">
+                      <form class="col s12 formulario">
                         <div class="row">
                           <div class="input-field col s12">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">Servicio</label>
+                                <select>
+                                  <option value="" disabled selected>Escoge una opción</option>
+                                  <option value="1">Option 1</option>
+                                  <option value="2">Option 2</option>
+                                  <option value="3">Option 3</option>
+                                </select>
+                                <label>Servicio</label>
                           </div>
                         </div>
                         <div class="row">
-                          <div class="input-field col s12">
-                            <input type="date" class="datepicker">
-                            <label for="last_name">Fecha</label>
+                          <div class="input-field col m6 s12">
+                            <input type="date" class="fecha">
+                            <label class="active" for="last_name">Fecha</label>
+                          </div>
+                          <div class="input-field col m6 s12">
+                              <input type="time" >
+                              <label class="active" for="last_name">hora</label>
                           </div>
                         </div>
-                        <div class="input-field col s12">
-                          <select>
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                          </select>
-                          <label>Hora</label>
-                        </div>
                         <div class="row">
-                          <div class="input-field col s12">
+                        <div class="col m6 s12">
+                          <p class="padding">
+                            <input type="checkbox" id="cuponCheck" />
+                            <label for="cuponCheck">Utilizar cupon del mes</label>
+                          </p>
+                        </div>
+                        <div class "col m6 s12">
+                          <div class="input-field col m6 s12 añadir codigoP">
                             <input id="last_name" type="text" class="validate">
                             <label for="last_name">Códogo Postal</label>
                           </div>
                         </div>
-                        <p>
-                          <input type="checkbox" id="test5" />
-                          <label for="test5">Utilizar cupon del mes</label>
-                        </p>
+                        </div>
                       </form>
-                      <ul class="cd-buttons">
-                        <li><a href="#0">Obtener</a></li>
-                        <li><a href="#0">cancelar</a></li>
-                      </ul>
-                      <a href="#0" class="cd-popup-close img-replace">Close</a>
                     </div> <!-- cd-popup-container -->
+                    <ul class="cd-buttons">
+                      <li><a href="#0" class="btnCancAcept">Cancelar</a></li>
+                      <li><a href="#0" class="btnCancAcept">Obtener</a></li>
+                    </ul>
+                    <a href="#0" class="cd-popup-close img-replace">Close</a>
                   </div> <!-- cd-popup -->
 
     
+
 
        
 

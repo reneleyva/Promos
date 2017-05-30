@@ -239,7 +239,7 @@ jQuery(document).ready(function($){
   
   //close popup
   $('.cd-popup').on('click', function(event){
-    if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
+    if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') || $(event.target).is('.btnCancAcept')) {
       event.preventDefault();
       $(this).removeClass('is-visible');
       $('body').css('overflow', 'visible');
@@ -252,7 +252,13 @@ jQuery(document).ready(function($){
         $('body').css('overflow', 'visible');
       }
     });
+
+  $('#cuponCheck').on('click',function(){
+    $('.añadir').toggleClass('codigoP')
+  });
+
 });
 
+/*picker*/
 
 

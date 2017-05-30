@@ -28,12 +28,9 @@ body{
 }
 .imagen-servicio{
     margin-top: -20%;
-}
-
-img.responsive-img, video.responsive-video {
     max-width: 35% !important;
-
 }
+
 
 .button-redes{
 	position: relative;
@@ -304,6 +301,8 @@ xpopup
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
   transition-duration: 0.3s;
+  height: 500px !important;
+  margin-top: 12% !important;
 }
 .cd-popup-container p {
   padding: 3em 1em;
@@ -329,14 +328,14 @@ xpopup
   transition: background-color 0.2s;
 }
 .cd-popup-container .cd-buttons li:first-child a {
-  background: #fc7169;
+  background: #b6bece;
   border-radius: 0 0 0 .25em;
 }
 .no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
   background-color: #fc8982;
 }
 .cd-popup-container .cd-buttons li:last-child a {
-  background: #b6bece;
+  background: #00bcd4;
   border-radius: 0 0 .25em 0;
 }
 .no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
@@ -404,4 +403,28 @@ xpopup
 	width: 65%;
     float: right;
     margin-top: 2%;
+}
+.imagen-servicio-popup{
+	max-width: 25% !important;
+    margin-bottom: 3%;
+    margin-top: -15% !important;
+}
+.formulario{
+	height: 320px;
+    overflow-y: scroll;
+}
+.codigoP{
+	display: none
+}
+.padding{
+	padding: 7% !important;
+}
+
+/*picker*/
+::-webkit-clear-button {
+    display:none !important;
+}
+
+input.fecha::-webkit-inner-spin-button {
+	display:none !important;
 }
