@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300');
 
 body{
-  background: #eef2f3; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient( top, #8e9eab,#eef2f3); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #8e9eab,#eef2f3); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #8e9eab,#eef2f3); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #8e9eab,#eef2f3); /* Standard syntax */
-}
-body{
-	background-color: gray;
+  font-size: 100%;
+  font-family: "Lato", sans-serif !important;
+  background-color: rgba(158, 158, 158, 0.22);
+  /* For browsers that do not support gradients */
+  /*background: -webkit-linear-gradient( top, #8e9eab,#eef2f3);  For Safari 5.1 to 6.0 */
+  /*background: -o-linear-gradient(bottom right, #8e9eab,#eef2f3); /* For Opera 11.1 to 12.0 */
+ /* background: -moz-linear-gradient(bottom right, #8e9eab,#eef2f3); /* For Firefox 3.6 to 15 */
+  /*background: linear-gradient(to right, #8e9eab,#eef2f3); /* Standard syntax */
 }
 .back{
-	margin-left: 6% !important;
+	margin-left: 13% !important;
 	font-size: 100% !important;
 }
 
@@ -20,7 +20,7 @@ body{
 }
 
 .fixed-action-btn ul {
-   bottom: -125px !important;
+   /*bottom: -125px !important;*/
 }
 
 .col.s12.m12{
@@ -37,10 +37,8 @@ body{
     height: 30px;
     display: inline;
     float: right;
-}
-.button-like{
-	position: absolute; 
-	/*right: 24px;*/
+    transform: scale(0.75);
+    margin-top: -52px;
 }
 .container-card{
 	width: 95%;
@@ -58,8 +56,8 @@ h5{
     margin-top: 5%;
 }
 .button-obtener{
-	display: inline-block;
     float: right;
+    margin-top: 11%;
 }
 .card-panel span{
 	display: inline-block;
@@ -111,7 +109,6 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -152,13 +149,6 @@ html * {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-body {
-  font-size: 100%;
-  font-family: "Lato", sans-serif;
-  background-color: #ffd88f;
-}
-
 a {
   color: #35a785;
   text-decoration: none;
@@ -243,13 +233,11 @@ header {
   font-weight: bold;
   text-transform: uppercase;
   border-radius: 50em;
-  background: #35a785;
+  background: #E91E63;
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.07);
 }
-@media only screen and (min-width: 1170px) {
-  .cd-popup-trigger {
-    
-  }
+.cd-popup-trigger:hover{
+	background: #ed3271;
 }
 
 /* -------------------------------- 
@@ -335,7 +323,7 @@ xpopup
   background-color: #fc8982;
 }
 .cd-popup-container .cd-buttons li:last-child a {
-  background: #00bcd4;
+  background: #00BBD3;
   border-radius: 0 0 .25em 0;
 }
 .no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
@@ -388,7 +376,7 @@ xpopup
 }
 
 .banda{
-	background-color: aqua;
+	background-color: #00BBD3;
 }
 .pop-contenedor{
 	width: 90%;
@@ -402,7 +390,12 @@ xpopup
 .grid-elementos{
 	width: 65%;
     float: right;
-    margin-top: 2%;
+    margin-top: -15%;
+    margin-bottom: 0px;
+}
+.grid-elementos-pop{
+	margin-top: 2%;
+	color:white;
 }
 .imagen-servicio-popup{
 	max-width: 25% !important;
@@ -411,7 +404,8 @@ xpopup
 }
 .formulario{
 	height: 320px;
-    overflow-y: scroll;
+	margin-top: 3%;
+   
 }
 .codigoP{
 	display: none
@@ -427,4 +421,76 @@ xpopup
 
 input.fecha::-webkit-inner-spin-button {
 	display:none !important;
+}
+
+.twitter{
+	background-color:#00aced !important;
+}
+.facebook{
+	background-color:#3b5998 !important;
+}
+
+a.button-obtener > i.right {
+    margin-left: 0% !important;
+}
+
+.cd-buttons{
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  margin: 0;
+}
+.row .col.s6 {
+  width: 100% !important;
+}
+.productos-container{
+  height: 330px !important;
+}
+.form-productos{
+  overflow-y: auto !important;
+}
+@media only screen and (max-width: 1024px) {
+    
+    .cd-popup-container {
+
+      margin-top: 15% !important;
+  }
+
+}
+
+@media only screen and (max-width: 800px) {
+  
+  .grid-elementos {
+      width: 100%;
+      float: left;
+      margin-top:0%;
+  }
+
+  .row .col.m6 {
+    width: 100%;
+  }
+
+  .descuento{
+    float: left;
+  }
+
+  .button-obtener {
+    padding: 0 50%;
+    margin: 0 0 5% 0;
+  }
+
+  .formulario {
+    /*margin-top: -11%;*/
+    overflow-y: scroll;
+  }
+
+  .grid-elementos-pop{
+    float: right;
+    width: 65%;
+
+  }
+  .esconder{
+    display: none;
+  }
+
 }
