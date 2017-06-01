@@ -25,11 +25,11 @@ jQuery(document).ready(function($) {
       //.log to determine when you want the 
       //nav bar to stick.  
       	console.log($(window).scrollTop())
-		if ($(window).scrollTop() > 376) {
+		if ($(window).scrollTop() > 400) {
 			console.log("Fixed");
 		  $('#tabs').addClass('fixed');
 		}
-		if ($(window).scrollTop() < 377) {
+		if ($(window).scrollTop() < 401) {
 		  $('#tabs').removeClass('fixed');
 		}
 		});
