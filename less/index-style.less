@@ -37,13 +37,15 @@ box-shadow: -1px 6px 21px -2px rgba(0,0,0,0.75);
 	}
 	
 }
-#tabs-fixed {
-	position: fixed;
-	margin-top: 0px;
-	background-color: @deeper-blue;
-	z-index: 3;
-	display: none;
+
+.fixed {
+    top: 56px;
+    z-index: 100;
+  	position: fixed;
+    width: 100%;
+    background-color: @deeper-blue; 
 }
+
 nav.nav-extended {
 	.tabs {
 		width: fit-content;
@@ -52,6 +54,8 @@ nav.nav-extended {
 
 //Cards
 #cards-container {
+	top: 0;
+	position: relative;
 	padding: 50px 130px 30px 130px;
 	.columna-1, .columna-2 {
 	}
