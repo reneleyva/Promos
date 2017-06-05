@@ -45,12 +45,53 @@ body{
     margin: auto;
 }
 
-h3{
+h3 {
     display: inline-block;
     margin: 3% 2%;
-    vertical-align: top;
+    // vertical-align: top;
+    font-size: 24pt;
+    color: black;
+    float: left;
 }
 
+.titulo,  {
+  font-size: 15pt;
+  color: black;
+}
+
+.cd-popup .descuento {
+  font-size: 20pt;
+}
+
+.cd-popup .img-producto {
+  min-height: 200px;
+}
+span#precio-anterior, span#precio {
+  color: #ED01A2;
+  font-size: 12pt;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.err-msg {
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
+.valido-msg {
+  color: green;
+  font-weight: bold;
+  display: none;
+}
+
+.no-registrado-msg {
+  color: orange;
+  font-weight: bold;
+  display: none;
+}
+span#precio-anterior {
+  text-decoration: line-through;
+}
 h5{
 	display: block;
     margin-top: 5%;
@@ -73,6 +114,9 @@ h5{
 }
 .descuento{
 	float:right;
+  font-weight: bold;
+  font-size: 34pt;
+  color: #DA0F0F;
 }
 
 #map {
@@ -105,39 +149,37 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section, main {
-	display: block;
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 /* -------------------------------- 
-
 Primary style
-
 -------------------------------- */
 html * {
   -webkit-font-smoothing: antialiased;
@@ -155,9 +197,7 @@ a {
 }
 
 /* -------------------------------- 
-
 Modules - reusable parts of our design
-
 -------------------------------- */
 .img-replace {
   /* replace text with an image */
@@ -169,9 +209,7 @@ Modules - reusable parts of our design
 }
 
 /* -------------------------------- 
-
 xnugget info 
-
 -------------------------------- */
 .cd-nugget-info {
   text-align: center;
@@ -205,9 +243,7 @@ xnugget info
 }
 
 /* -------------------------------- 
-
 Main components 
-
 -------------------------------- */
 header {
   height: 200px;
@@ -237,13 +273,11 @@ header {
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.07);
 }
 .cd-popup-trigger:hover{
-	background: #ed3271;
+  background: #ed3271;
 }
 
 /* -------------------------------- 
-
 xpopup 
-
 -------------------------------- */
 .cd-popup {
   position: fixed;
@@ -251,7 +285,7 @@ xpopup
   top: 0;
   height: 100%;
   width: 100%;
-  background-color:  rgba(255, 255, 255, 0.88);	
+  background-color:  rgba(255, 255, 255, 0.88); 
   opacity: 0;
   visibility: hidden;
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
@@ -376,42 +410,42 @@ xpopup
 }
 
 .banda{
-	background-color: #00BBD3;
+  background-color: #00BBD3;
 }
 .pop-contenedor{
-	width: 90%;
+  width: 90%;
     margin: auto;
     text-align: left;;
 }
 .contenedor-form{
-	width: 80%;
+  width: 80%;
 }
 
 .grid-elementos{
-	width: 65%;
+  width: 65%;
     float: right;
     margin-top: -15%;
     margin-bottom: 0px;
 }
 .grid-elementos-pop{
-	margin-top: 2%;
-	color:white;
+  margin-top: 2%;
+  color:white;
 }
 .imagen-servicio-popup{
-	max-width: 25% !important;
+  max-width: 25% !important;
     margin-bottom: 3%;
     margin-top: -15% !important;
 }
 .formulario{
-	height: 320px;
-	margin-top: 3%;
+  height: 320px;
+  margin-top: 3%;
    
 }
 .codigoP{
-	display: none
+  display: none
 }
 .padding{
-	padding: 7% !important;
+  padding: 7% !important;
 }
 
 /*picker*/
@@ -420,14 +454,14 @@ xpopup
 }
 
 input.fecha::-webkit-inner-spin-button {
-	display:none !important;
+  display:none !important;
 }
 
 .twitter{
-	background-color:#00aced !important;
+  background-color:#00aced !important;
 }
 .facebook{
-	background-color:#3b5998 !important;
+  background-color:#3b5998 !important;
 }
 
 a.button-obtener > i.right {

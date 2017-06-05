@@ -12,15 +12,17 @@
     <link rel="stylesheet" href="../css/servicios.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script type="text/javascript" src="../js/verProducto.js"></script>
   </head>
   <body>
     <!--Barra de navegación-->
     <nav>
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo"><img id="logo" src="../img/logo.png"></a>
+        <a href="index.html" class="brand-logo"><img id="logo" src="../img/logo.png"></a>
         <ul class="left hide-on-med-and-down back">
-        <li><a href="#!"><i class="material-icons left">keyboard_backspace</i>Regresar</a></li>
+        <li><a href="index.html"><i class="material-icons left">keyboard_backspace</i>Regresar</a></li>
         </ul>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
@@ -53,35 +55,31 @@
           <div class="card-panel">
             <div class = "container-card">
               <!--Imagen del produto o servicio-->
-              <img class="imagen-servicio z-depth-3 responsive-img" src="../img/audifonos.jpg">
+              <img  class="imagen-servicio z-depth-3 responsive-img img-producto" src="../img/audifonos.jpg">
               <!--Botón de redes sociales-->
-              <a class="btn-floating btn-large waves-effect waves-light red button-redes facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-              <a class="btn-floating btn-large waves-effect waves-light red button-redes twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
               <div class="row grid-elementos">
                 <!--Titulo del producto o servicio-->
-                <div class="col m6 s12"><h3>Audifonos</h3></div>
+                <div class="col s12 m6"><h3 class="titulo">Audifonos</h3></div>
+
                 <!--Descuento-->
-                <div class="col  m6 s12"><h3 class="descuento">-50%</h3></div>
+                <div class="col s12 m6"><h3 class="descuento">-50%</h3></div>
                 <!--Botón para abrir el pop up-->
                 <div class="col s12">
-                  <a class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" href="#0"><i class="material-icons right agendar">event</i>Agendar</a>
+                  <a class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" href="#0"><i class="material-icons right agendar">event</i>Obtener</a>
                 </div>
               </div>
               <!--Descripción del producto o servicio-->
               <h5>Descripcion:</h5>
-              <p class ="fi">Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.
-              </p>
-              <p class="fi">
-              Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.
+              <p id="descripcion" class ="fi">Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.
               </p>
               <!--Carrusel del producto o servicio-->
-              <div class="carousel carousel-slider carrusel-style">
+              <!-- <div class="carousel carousel-slider carrusel-style">
                 <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
                 <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
                 <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
                 <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
               </div>
-
+ -->
             </div>
           </div>
         </div>
@@ -93,15 +91,14 @@
                 <div class="cd-popup-container productos-container">
                   <div class="banda">
                     <div class="pop-contenedor">
-                      <img class="imagen-servicio imagen-servicio-popup z-depth-3 responsive-img" src="../img/audifonos.jpg">
-                      <div class="row grid-elementos grid-elementos-pop">
-                        <!--Titulo del producto o servicio-->
-                        <h3>Audifonos</h3>
-                        <h3 class="esconder">-50%</h3>
+                      <!-- <img class="col s6 imagen-servicio imagen-servicio-popup z-depth-3 responsive-img img-producto" src="../img/audifonos.jpg"> -->
+                      <div class="row col s6 grid-elementos grid-elementos-pop">
+                        
                       </div>
                     </div>
                   </div>
-                  <div class="row contenedor-form">
+                  <div class="row col s12 contenedor-form">
+                  <h3 class="titulo">Audifonos</h3>
                       <form class="col s12 formulario form-productos">
                         <div class="row">
                         <div class="col m6 s12">
@@ -112,9 +109,13 @@
                         </div>
                         <div class "col m6 s12">
                           <div class="input-field col m6 s12 añadir codigoP">
-                            <input id="last_name" type="text" class="validate">
+                            <input id="cp" maxlength="5" type="text" class="validate">
+
                             <label for="last_name">Códogo Postal</label>
                           </div>
+                          <p class="err-msg">Código postal inválido</p>
+                          <p class="valido-msg">Código postal válido</p>
+                          <p class="no-registrado-msg">Lo sentimos su código postal no está registrado</p>
                         </div>
                         </div>
                       </form>
@@ -122,7 +123,8 @@
                     <a href="#0" class="cd-popup-close img-replace">Close</a>
                     <ul class="cd-buttons row">
                       <li><a href="#0" class="btnCancAcept col s6">Cancelar</a></li>
-                      <li><a href="#0" class="btnCancAcept col s6">Obtener</a></li>
+                      <li><a id="obtener" class="btn btn-default col s6">Obtener</a></li>
+                      <li><a id="aceptar" style="display: none" class="btnCancAcept col s6">Aceptar</a></li>
                     </ul>
                   </div> <!-- cd-popup -->
 

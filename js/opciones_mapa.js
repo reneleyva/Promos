@@ -237,9 +237,9 @@ jQuery(document).ready(function($){
     $('body').css('overflow', 'hidden');
   });
   
-  //close popup
+  // close popup
   $('.cd-popup').on('click', function(event){
-    if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') || $(event.target).is('.btnCancAcept')) {
+    if( $(event.target).is('.cd-popup-close') || $(event.target).is('.btnCancAcept')) {
       event.preventDefault();
       $(this).removeClass('is-visible');
       $('body').css('overflow', 'visible');
