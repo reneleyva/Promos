@@ -20,12 +20,15 @@ angular
         const descuentos = rootRef.child('descuentos');  
         //La subbase servicios
         const servicios = rootRef.child('servicios'); 
+        //La subbase restaurantes
+        const restaurantes = rootRef.child('restaurantes'); 
 
         //Lista de descuentos desde firebase      
         $scope.listaDescuentos = $firebaseObject(descuentos); 
         //Lista de servicios desde firebase      
         $scope.listaServicios = $firebaseObject(servicios);
-
+        //Lista de restaurantes desde firebase      
+        $scope.listaRestaurantes = $firebaseObject(restaurantes);
 
         /* Convierte un objeto con llaves en un arreglo
         * de objetos descuentos.

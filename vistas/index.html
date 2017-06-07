@@ -205,58 +205,26 @@
 				<h3>Servicios</h3>
 				<!-- Colunma 1 -->
 				<div class="row col s12 m12 l6 columna-1">
+					
+					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
+					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
+					<div
+					ng-repeat="descuento in toArray(listaServicios) | limitTo: toArray(listaServicios).length/2"
+					ng-class="{'small-card col s6': descuento.descuento < 49, 'big-card col s12': descuento.descuento > 49}">
 
-					<!-- Card descuento GRANDE-->
-					<div class="col s12 m12">
 			          <div class="card">
 
 			            <div class="card-image">
 
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
+			              <img ng-src="{{descuento.imagenUrl}}">
+			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
 			            <div class="action">
 				         
-		              		<a class="waves-effect waves-light btn"><span class="truncate titulo">Audifonos Sony</span><i class="material-icons right">keyboard_arrow_right</i></a>
-			            </div>
-
-			            <input class="key" type="text" value="" hidden>
-			          </div>
-			        </div>
-					
-					<!-- Card descuento PEQUEÑA-->
-					<div class="col s6 m6 ">
-			          <div class="card small-card">
-
-			            <div class="card-image">
-
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
-			            </div>
-			        
-			            <div class="action">
-				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
-			            </div>
-
-			            <input class="key" type="text" value="" hidden>
-			          </div>
-			        </div>
-
-			        <!-- Card descuento PEQUEÑA-->
-					<div class="col s6 m6 ">
-			          <div class="card small-card">
-
-			            <div class="card-image">
-
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
-			            </div>
-			        
-			            <div class="action">
-				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
+		              		<a class="waves-effect waves-light btn">
+		              			<span class="titulo truncate">{{descuento.titulo}}</span><i class="material-icons right">keyboard_arrow_right</i>
+		              		</a>
 			            </div>
 
 			            <input class="key" type="text" value="" hidden>
@@ -267,61 +235,31 @@
 				
 				<!-- Colunma 2 -->
 				<div class="row col s12 m12 l6 columna-2">
-				
-				<!-- Card descuento PEQUEÑA-->
-					<div class="col s6 m6 ">
-			          <div class="card small-card">
+					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
+					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
+					<div
+					ng-repeat="descuento in toArray(listaServicios) | limitTo: (toArray(listaServicios).length/2 - toArray(listaServicios).length)"
+					ng-class="{'small-card col s6': descuento.descuento < 49, 'big-card col s12': descuento.descuento > 49}">
 
-			            <div class="card-image">
-
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
-			            </div>
-			        
-			            <div class="action">
-				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
-			            </div>
-			            <input class="key" type="text" value="" hidden>
-			          </div>
-			        </div>
-
-			        <!-- Card descuento PEQUEÑA-->
-					<div class="col s6 m6 ">
-			          <div class="card small-card">
-
-			            <div class="card-image">
-
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
-			            </div>
-			        
-			            <div class="action">
-				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
-			            </div>
-			            <input class="key" type="text" value="" hidden>
-			          </div>
-			        </div>
-					
-					<!-- Card descuento GRANDE-->
-					<div class="col s12 m12">
 			          <div class="card">
 
 			            <div class="card-image">
 
-			              <img class="responsive-img" src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
+			              <img ng-src="{{descuento.imagenUrl}}">
+			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
 			            <div class="action">
 				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Sony</span><i class="material-icons right">keyboard_arrow_right</i></a>
+		              		<a class="waves-effect waves-light btn">
+		              			<span class="titulo truncate">{{descuento.titulo}}</span><i class="material-icons right">keyboard_arrow_right</i>
+		              		</a>
 			            </div>
+
 			            <input class="key" type="text" value="" hidden>
 			          </div>
-			        </div>
-					
+			        </div>		
+
 				</div><!-- FIn columna 2 -->
 				<!-- FIN SERVICIOS -->
 			</section>
@@ -333,122 +271,58 @@
 				<!-- Colunma 1 -->
 				<div class="row col s12 m12 l6 columna-1">
 
-					<!-- Card descuento GRANDE-->
-					<div class="col s12 m12">
+					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
+					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
+					<div
+					ng-repeat="descuento in toArray(listaRestaurantes) | limitTo: toArray(listaRestaurantes).length/2"
+					ng-class="{'small-card col s6': descuento.descuento < 49, 'big-card col s12': descuento.descuento > 49}">
+
 			          <div class="card">
 
 			            <div class="card-image">
 
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
+			              <img ng-src="{{descuento.imagenUrl}}">
+			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
 			            <div class="action">
 				         
-		              		<a class="waves-effect waves-light btn"><span class="truncate titulo">Audifonos Sony</span><i class="material-icons right">keyboard_arrow_right</i></a>
+		              		<a class="waves-effect waves-light btn">
+		              			<span class="titulo truncate">{{descuento.titulo}}</span><i class="material-icons right">keyboard_arrow_right</i>
+		              		</a>
 			            </div>
 
 			            <input class="key" type="text" value="" hidden>
 			          </div>
 			        </div>
-					
-					<!-- Card descuento PEQUEÑA-->
-					<div class="col s6 m6 ">
-			          <div class="card small-card">
-
-			            <div class="card-image">
-
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
-			            </div>
-			        
-			            <div class="action">
-				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
-			            </div>
-
-			            <input class="key" type="text" value="" hidden>
-			          </div>
-			        </div>
-
-			        <!-- Card descuento PEQUEÑA-->
-					<div class="col s6 m6 ">
-			          <div class="card small-card">
-
-			            <div class="card-image">
-
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
-			            </div>
-			        
-			            <div class="action">
-				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
-			            </div>
-
-			            <input class="key" type="text" value="" hidden>
-			          </div>
-			        </div>
-
 				</div> <!-- FIn columna 1 -->
 				
 				<!-- Colunma 2 -->
 				<div class="row col s12 m12 l6 columna-2">
-				
-				<!-- Card descuento PEQUEÑA-->
-					<div class="col s6 m6 ">
-			          <div class="card small-card">
+					<!-- Se repite las targetas de la mitad de restaurantes con ng-repeat-->
+					<!-- Si el restaurante es mayor a 50 es una targeta grande en ng-class -->
+					<div
+					ng-repeat="descuento in toArray(listaRestaurantes) | limitTo: (toArray(listaRestaurantes).length/2 - toArray(listaRestaurantes).length)"
+					ng-class="{'small-card col s6': descuento.descuento < 49, 'big-card col s12': descuento.descuento > 49}">
 
-			            <div class="card-image">
-
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
-			            </div>
-			        
-			            <div class="action">
-				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
-			            </div>
-			            <input class="key" type="text" value="" hidden>
-			          </div>
-			        </div>
-
-			        <!-- Card descuento PEQUEÑA-->
-					<div class="col s6 m6 ">
-			          <div class="card small-card">
-
-			            <div class="card-image">
-
-			              <img src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
-			            </div>
-			        
-			            <div class="action">
-				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Marshmallow-LOL</span><i class="material-icons right">keyboard_arrow_right</i></a>
-			            </div>
-			            <input class="key" type="text" value="" hidden>
-			          </div>
-			        </div>
-					
-					<!-- Card descuento GRANDE-->
-					<div class="col s12 m12">
 			          <div class="card">
 
 			            <div class="card-image">
 
-			              <img class="responsive-img" src="../img/audifonos.jpg">
-			              <span class="sale">-40%</span>
+			              <img ng-src="{{descuento.imagenUrl}}">
+			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
 			            <div class="action">
 				         
-		              		<a class="waves-effect waves-light btn"><span class="titulo truncate">Audifonos Sony</span><i class="material-icons right">keyboard_arrow_right</i></a>
+		              		<a class="waves-effect waves-light btn">
+		              			<span class="titulo truncate">{{descuento.titulo}}</span><i class="material-icons right">keyboard_arrow_right</i>
+		              		</a>
 			            </div>
+
 			            <input class="key" type="text" value="" hidden>
 			          </div>
-			        </div>
-					
+			        </div>						
 				</div><!-- FIn columna 2 -->
 				<!-- FIN SERVICIOS -->
 			</section>
