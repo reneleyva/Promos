@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html ng-app="busca-app">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Promos</title>
+	<!-- Materialize -->
+	<link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="../css/navbar-visitor.css">
+	<link rel="stylesheet" href="../css/busca-style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+	<script src="../js/busca-controlador.js"></script>
+</head>
+<body ng-controller="busca-controlador as ctrl">
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="index.html" class="brand-logo"><img id="logo" src="../img/logo.png"><span>PROMOS</span></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+				  	<li id="search-icon"><a href="#"><i class="material-icons">search</i></a></li>
+					<li><a href="registrarse.html">Registrarse</a></li>
+		        	<li><a href="#">Iniciar Sesión</a></li>
+				</ul>
+			</div>
+		</nav> <!-- FIN nav -->
+	</div>
+
+	<ul class="side-nav" id="mobile-demo">
+		<li><a href="#">Registrarse</a></li>
+    	<li><a href="#">Iniciar Sesión</a></li>
+    	<li><a href="#"><i class="material-icons white-text">search</i></a></li>
+	</ul>
+	
+	<div class="container-fluid">
+	
+	<!-- Barra de busqueda -->
+	<div class="search row">
+		<div class="hide-on-med-and-down col l12">
+			<form  action="busca.html" method="GET">
+				<div class="input-field">
+					 <i class="material-icons prefix">search</i>
+	          		<input id="search" maxlength="20" name="q" type="text" ng-model="q" placeholder="Buscar...">
+	          		<input type="submit" hidden value="LOL">
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- EMPIEZA LOS DESCUENTOS -->
+	<div class="container-fluid">
+		<div id="cards-container" class="row col m12">
+			
+			<!-- Comienxo Poductos -->
+			<section class="col s12" id="productos">
+				<h3>Resultados para: {{q}}</h3>
+				<!-- Colunma 1 Aquí se generan la primera mitad de 
+				descuentos en la Colunma2 se genera la segunda mitad.
+				ng-class="descuento.descuento > 49 ? 'big-card col s6 m6' : 'small-card col s12 m12'"-->
+
+					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
+					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
+					<div
+					ng-repeat="descuento in toArray(listaDescuentos) | filter:q"
+					ng-class="{'small-card col s3': descuento.descuento < 49, 'big-card col s6': descuento.descuento > 49}"
+					ng-click="onClickCardDescuento(descuento.key, 'producto')">
+			          <div class="card">
+
+			            <div class="card-image">
+			              <!-- <img ng-src="{{descuento.imagenUrl}}"> -->
+			              <div class="imagen" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+			              	
+			              </div>
+			              <span class="sale">-{{descuento.descuento}}%</span>
+			            </div>
+			        
+			            <div class="action">
+				         
+		              		<a class="waves-effect waves-light btn">
+		              			<span class="titulo truncate">{{descuento.titulo}}</span><i class="material-icons right">keyboard_arrow_right</i>
+		              		</a>
+			            </div>
+
+			            <input class="key" type="text" value="" hidden>
+			          </div>
+			        </div>
+					
+					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
+					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
+					<div
+					ng-repeat="descuento in toArray(listaServicios) | filter:q"
+					ng-class="{'small-card col s3': descuento.descuento < 49, 'big-card col s6': descuento.descuento > 49}"
+					ng-click="onClickCardDescuento(descuento.key, 'servicio')">
+			          <div class="card">
+
+			            <div class="card-image">
+			              <!-- <img ng-src="{{descuento.imagenUrl}}"> -->
+			              <div class="imagen" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+			              	
+			              </div>
+			              <span class="sale">-{{descuento.descuento}}%</span>
+			            </div>
+			        
+			            <div class="action">
+				         
+		              		<a class="waves-effect waves-light btn">
+		              			<span class="titulo truncate">{{descuento.titulo}}</span><i class="material-icons right">keyboard_arrow_right</i>
+		              		</a>
+			            </div>
+
+			            <input class="key" type="text" value="" hidden>
+			          </div>
+			        </div>
+
+			        <!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
+					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
+					<div
+					ng-repeat="descuento in toArray(listaRestaurantes) | filter:q"
+					ng-class="{'small-card col s3': descuento.descuento < 49, 'big-card col s6': descuento.descuento > 49}"
+					ng-click="onClickCardDescuento(descuento.key, 'restaurante')">
+			          <div class="card">
+
+			            <div class="card-image">
+			              <!-- <img ng-src="{{descuento.imagenUrl}}"> -->
+			              <div class="imagen" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+			              	
+			              </div>
+			              <span class="sale">-{{descuento.descuento}}%</span>
+			            </div>
+			        
+			            <div class="action">
+				         
+		              		<a class="waves-effect waves-light btn">
+		              			<span class="titulo truncate">{{descuento.titulo}}</span><i class="material-icons right">keyboard_arrow_right</i>
+		              		</a>
+			            </div>
+
+			            <input class="key" type="text" value="" hidden>
+			          </div>
+			        </div>
+
+
+				<!-- FIN Productos -->
+			</section>
+		
+		</div><!-- Fin Cards-container -->
+	</div>
+	
+	
+
+	<!-- SCRIPTS -->
+	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../bower_components/materialize/dist/js/materialize.min.js"></script>
+	<script src="../js/index.js"></script>
+</body>
+</html>

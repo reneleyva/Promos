@@ -12,8 +12,9 @@
   firebase.initializeApp(config);
 
 angular
-    .module('app', ['firebase'])
+    .module('principal', ['firebase'])
     .controller('MyCtrl', function($scope, $firebaseObject){
+        sessionStorage.name = "Rene";
         //La base de datos principal
         const rootRef = firebase.database().ref().child('promos');
         //La subbase descuentos
@@ -30,12 +31,23 @@ angular
         //Lista de restaurantes desde firebase      
         $scope.listaRestaurantes = $firebaseObject(restaurantes);
 
+
+        /* Funcion para evento cuando hagan click en algún descuento 
+         * @param el key o id del descuento en la base de dtaos
+        */
+        $scope.onClickCardDescuento = function(key, tipo) {
+          if (tipo === "producto")
+            location.href = "verProducto.html?key="+key;
+          else 
+            location.href = "verServicio.html?key="+key;
+        };
         /* Convierte un objeto con llaves en un arreglo
         * de objetos descuentos.
         */
         $scope.toArray = function(lista) {
           var result = [];
           angular.forEach(lista, function(value, key) {
+              value['key'] = key;
               result.push(value);
           });
           return result;
