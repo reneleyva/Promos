@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="promos-principal">
+<html ng-app="app">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +10,20 @@
 	<link rel="stylesheet" href="../css/navbar-visitor.css">
 	<link rel="stylesheet" href="../css/index-style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+	<!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
 	<script src="../js/app.js"></script>
 </head>
-<body ng-controller="promosController as dirList">
+<body ng-controller="MyCtrl as ctrl">
+      <pre>
+{{ ctrl.object | json }}
+      </pre>
 	<div class="navbar-fixed">
 		<nav>
 			<div class="nav-wrapper">
