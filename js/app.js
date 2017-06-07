@@ -13,10 +13,34 @@
 
 angular
     .module('app', ['firebase'])
-    .controller('MyCtrl', function($firebaseObject){
+    .controller('MyCtrl', function($scope, $firebaseObject){
+        //La base de datos principal
         const rootRef = firebase.database().ref().child('promos');
-        const ref = rootRef.child('descuentos');
-        this.object = $firebaseObject(ref);
+        //La subbase descuentos
+        const descuentos = rootRef.child('descuentos');  
+        //La subbase servicios
+        const servicios = rootRef.child('servicios'); 
+
+        //Lista de descuentos desde firebase      
+        $scope.listaDescuentos = $firebaseObject(descuentos); 
+        //Lista de servicios desde firebase      
+        $scope.listaServicios = $firebaseObject(servicios);
+
+
+        /* Convierte un objeto con llaves en un arreglo
+        * de objetos descuentos.
+        */
+        $scope.toArray = function(lista) {
+          var result = [];
+          angular.forEach(lista, function(value, key) {
+              result.push(value);
+          });
+          return result;
+        };
+        // this.lista = [];
+        // for (var key in this.object) {
+        //   this.lista.push(object[key]);
+        // }
     });
 }());
 
