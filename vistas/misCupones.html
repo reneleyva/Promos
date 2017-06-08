@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="../css/navbar-visitor.css">
+	<link rel="stylesheet" href="../css/index-style.css">
+	<link rel="stylesheet" href="../css/perfil.css">
+</head>
+<body>
+	<div  class="z-depth-1">	
+		<div class="row barra-perfil ">
+			<!--Imagen del usuario-->
+        	<div class="col  s12 center">
+	        	<div>
+					<img class="circle responsive-img img-width z-depth-2" src="../img/audifonos.jpg">
+				</div>
+        	</div>
+        	<!--Fin Imagen del usuario-->
+        	<!--Nombre del usuario-->
+        	<div class="col s12 center">        		
+	          <span class="white-text nombre">
+	          	Arturo Castillo
+	          </span>
+        	</div>
+	    </div>
+		<!--Fin Nombre del usuario-->
+	</div>
+	<div>
+	<!--Contenedor-->
+	<div class="container">
+        
+		<!--Descuentos Flip-->
+		<div class="section">
+        <div class="section__content clearfix">
+          <div class="card effect__click">
+            <div class="card__front">
+              <span class="card__text">front</span>
+            </div>
+            <div class="card__back">
+              <span class="card__text">back</span>
+              <span class="negro">back</span>
+            </div>
+          </div><!-- /card -->
+          <div class="card effect__click">
+            <div class="card__front">
+              <div class="center white-text text-nombre">
+              	<span class="white-text flow-text truncate">San Angelisdfghjkldfghjksdjkn</span>
+              </div>
+              <div class="card__text border-porcentaje">
+              	<span class="card__text flow-text text-porcentaje">-50%</span>
+              </div>
+              <div class="center">
+              	<span class="white-text flow-text truncate blanco">San Angelin</span>
+              </div>
+            </div>
+            <div class="card__back">
+              <span class="card__text negro">
+              hola 
+              </span>
+            </div>
+          </div><!-- /card -->
+          <div class="card effect__click">
+            <div class="card__front">
+              <span class="card__text">front</span>
+            </div>
+            <div class="card__back">
+              <span class="card__text negro">back</span>
+              <span class="negro">back</span>
+            </div>
+          </div><!-- /card -->
+          <div class="card effect__click">
+            <div class="card__front">
+              <span class="card__text">front</span>
+            </div>
+            <div class="card__back">
+              <span class="card__text">back</span>
+            </div>
+          </div>
+        </div><!-- /card -->
+      </div><!-- /section -->
+	</div>
+    </div>
+	<!--Fin Contenedor-->        
+	<!-- SCRIPTS -->
+	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../bower_components/materialize/dist/js/materialize.min.js"></script>
+	<script src="../js/index.js"></script>
+	<script>
+		(function() {
+  var cards = document.querySelectorAll(".effect__click");
+  for ( var i  = 0, len = cards.length; i < len; i++ ) {
+    var card = cards[i];
+    clickListener( card );
+  }
+
+  function clickListener(card) {
+    card.addEventListener( "click", function() {
+      var c = this.classList;
+      c.contains("flipped") === true ? c.remove("flipped") : c.add("flipped");
+    });
+  }
+})();
+	</script>
+</body>
+</html>
