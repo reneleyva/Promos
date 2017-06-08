@@ -62,15 +62,12 @@
 			
 			<!-- Comienxo Poductos -->
 			<section class="col s12" id="productos">
-				<h3>Resultados para: {{q}}</h3>
-				<!-- Colunma 1 Aquí se generan la primera mitad de 
-				descuentos en la Colunma2 se genera la segunda mitad.
-				ng-class="descuento.descuento > 49 ? 'big-card col s6 m6' : 'small-card col s12 m12'"-->
+				<h4>Resultados para: {{q}}</h4>
 
-					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
+					<!-- Se repite las targetas de descuentos con ng-repeat y se filtran-->
 					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
 					<div
-					ng-repeat="descuento in toArray(listaDescuentos) | filter:q"
+					ng-repeat="descuento in listaFiltrada = (toArray(listaDescuentos) | filter:q:strict)"
 					ng-class="{'small-card col s3': descuento.descuento < 49, 'big-card col s6': descuento.descuento > 49}"
 					ng-click="onClickCardDescuento(descuento.key, 'producto')">
 			          <div class="card">
@@ -93,6 +90,7 @@
 			            <input class="key" type="text" value="" hidden>
 			          </div>
 			        </div>
+			        <h4 ng-hide="listaFiltrada.length" class="center-align grey-text">Ningún resultado encontrado :(</h4>
 					
 					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
 					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->

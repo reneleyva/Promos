@@ -1,5 +1,5 @@
   <!DOCTYPE html>
-  <html>
+  <html ng-app="verServicio-app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,11 +12,18 @@
     <link rel="stylesheet" href="../css/servicios.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
-    <script type="text/javascript" src="../js/verServicio.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+    <!-- Controlador -->
+    <script type="text/javascript" src="../js/verServicio-controlador.js"></script>
+
+
   </head>
-  <body>
+  <body ng-controller="verServicio-controlador as ctrl">
     <!--Barra de navegación-->
     <nav>
       <div class="nav-wrapper">
@@ -49,43 +56,45 @@
       </div>
     </div>-->
     <!--Detalles del producto o servicio-->
-    <div class="container">
+    <div class="container" 
+         ng-repeat="descuento in toArray(listaServicios) | filter:key:strict">
       <div class="row">
         <div class="col s12 m12">
           <div class="card-panel">
             <div class = "container-card">
               <!--Imagen del produto o servicio-->
-              <img  class="imagen-servicio z-depth-3 responsive-img img-producto" src="../img/audifonos.jpg">
+              <img  class="imagen-servicio z-depth-3 responsive-img img-producto" ng-src="{{descuento.imagenUrl}}">
               <!--Botón de redes sociales-->
               <div class="row grid-elementos">
                 <!--Titulo del producto o servicio-->
-                <div class=""><h3 class="titulo">Audifonos</h3></div>
+                <div class=""><h3 class="titulo">{{descuento.titulo}}</h3></div>
                 <!--Descuento-->
-                <div class=""><h3 class="descuento">-50%</h3></div>
+                <div class=""><h3 class="descuento">-{{descuento.descuento}}%</h3></div>
                 <!--Botón para abrir el pop up-->
                 <div class="col s12">
-                  <a id="agendar" class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" href="#0"><i class="material-icons right agendar">event</i>Agendar</a>
+                  <a id="agendar" class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" ng-click="onClickBotonObtener()"><i class="material-icons right agendar">event</i>Agendar</a>
                 </div>
               </div>
               <!--Descripción del producto o servicio-->
               <h5>Descripcion:</h5>
-              <p id="descripcion" class ="fi">Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.
+              <p id="descripcion" class ="fi">
+                {{descuento.descripcion}}
               </p>
               <!--Carrusel del producto o servicio-->
-              <div class="carousel carousel-slider carrusel-style">
-                <a class="carousel-item" href="#one!"><img id="imagen-extra" src="http://lorempixel.com/800/400/food/1"></a>
+              <div class="imagenExtra row">
+                <img class="responsive-img" ng-src="{{descuento.imagenComida}}">
               </div>
+              
               <!--Mapa del servicio-->
-              <div id="map"></div>
-
+              <!-- <div id="map"></div> -->
             </div>
           </div>
         </div>
       </div>
     </div>
     
-    <!--Pop up-->
-              <div class="cd-popup" role="alert">
+     <!--Pop up-->
+              <div class="cd-popup" role="alert" ng-repeat="descuento in toArray(listaServicios) | filter:key:strict">
                 <div class="cd-popup-container">
                   <div class="banda">
                     <div class="pop-contenedor">
@@ -97,7 +106,7 @@
                     </div>
                   </div>
                   <div class="row contenedor-form">
-                  <h3 class="titulo">Audifonos</h3>
+                  <h3 class="titulo">{{descuento.titulo}}</h3>
                   <div class="row">
                     <p class="campos-msg" style="color: red;display: none;"><b>Por favor llena todos los campos</b></p>
                   </div>
@@ -107,9 +116,8 @@
                         
                         <div class="row">
                           <div class="col s12">
-                                <select id="opciones">
-                                <option value="" disabled selected>Escoge una opción</option>
-                                
+                                <select id="opciones" data-opciones="{{descuento.opciones}}">
+                                <option value="" disabled selected>Escoge una opción</option>                               
                                 </select>
                                 <label>Servicio</label>
                           </div>
@@ -127,27 +135,27 @@
                         <div class="row">
                         <div class="col m6 s12">
                           <p class="padding">
-                            <input type="checkbox" id="cuponCheck" />
+                            <input type="checkbox" id="cuponCheck" ng-click="checkBoxChecked()"/>
                             <label for="cuponCheck">Utilizar cupon del mes</label>
                           </p>
                         </div>
                         <div class "col m6 s12">
                           <div class="input-field col m6 s12 añadir codigoP">
-                            <input id="cp" maxlength="5" type="text" class="validate">
+                            <input id="cp" autocomplete="off" maxlength="5" type="text" class="validate" ng-model="cp" ng-keyup="validaCp(cp)">
                             <label for="last_name">Códogo Postal</label>
                           </div>
-                          <p class="err-msg">Código postal inválido</p>
-                          <p class="valido-msg">Código postal válido</p>
-                          <p class="no-registrado-msg">Lo sentimos su código postal no está registrado</p>
+                          <p class="err-msg msg">Código postal inválido</p>
+                          <p class="valido-msg msg">Código postal válido</p>
+                          <p class="no-registrado-msg msg">Lo sentimos su código postal no está registrado</p>
                         </div>
                         </div>
                       </form>
                     </div> <!-- cd-popup-container -->
-                    <a href="#0" class="cd-popup-close img-replace">Close</a>
+                    <a ng-click="closePopUp()" class="cd-popup-close img-replace">Close</a>
 
                     <ul class="cd-buttons row">
 
-                      <li><a href="#0" class="btnCancAcept col s6">Cancelar</a></li>
+                      <li><a ng-click="closePopUp()" class="btnCancAcept col s6">Cancelar</a></li>
                       <li><a id="obtener" class="btn btn-default col s6">Obtener</a></li>
                        <li><a id="aceptar" style="display: none" class="btnCancAcept col s6">Aceptar</a></li>
                     </ul>
@@ -163,6 +171,6 @@
     <script src="../bower_components/materialize/dist/js/materialize.min.js"></script>
     <script src="../js/index.js"></script>
     <script src="../js/opciones_mapa.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXm_2Gm3d8mYibMixG-AJOmM2iUDHoiZA&callback=initMap"async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXm_2Gm3d8mYibMixG-AJOmM2iUDHoiZA&callback=initMap"></script>
   </body>
   </html>

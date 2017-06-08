@@ -1,5 +1,5 @@
   <!DOCTYPE html>
-  <html ng-app="verProducto-app">
+  <html  ng-app="verProducto-app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="../css/servicios.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- AngularJS -->
+      <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
@@ -32,7 +31,7 @@
         </ul>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li id="search-icon"><a href="#"><i class="material-icons">search</i></a></li>
+          <!--<li id="search-icon"><a href="#"><i class="material-icons">search</i></a></li>-->
           <li><a href="#">Iniciar Sesión</a></li> 
           <li><a href="#">Registrarse</a></li>
         </ul>
@@ -43,20 +42,7 @@
         </ul>
       </div>
     </nav>
-
-    <!-- Campo de busqueda -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="search hide-on-med-and-down col l12">
-          <div class="input-field">
-            <i class="material-icons prefix">search</i>
-            <input id="icon_prefix" type="text" class="validate" placeholder="Buscar...">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Detalles del producto o servicio-->
-
+  
     <!-- "Repite" la vista filtrado en el key proporcionado por GET en el url 
         digo "Repite" por que solo habrá uno que coicida de la lista de productos.
     -->
@@ -77,7 +63,7 @@
                 <div class="col s12 m6"><h3 class="descuento">-{{descuento.descuento}}%</h3></div>
                 <!--Botón para abrir el pop up-->
                 <div class="col s12">
-                  <a class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" href="#0"><i class="material-icons right agendar">event</i>Obtener</a>
+                  <a class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" ng-click="onClickBotonObtener()"><i class="material-icons right agendar">event</i>Obtener</a>
                 </div>
               </div>
               <!--Descripción del producto o servicio-->
@@ -85,19 +71,12 @@
               <p id="descripcion" class ="fi">
                 {{descuento.descripcion}}
               </p>
-              <!--Carrusel del producto o servicio-->
-              <!-- <div class="carousel carousel-slider carrusel-style">
-                <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
-                <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
-                <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
-                <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
-              </div>
- -->
+             
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- Fin container -->
     
     <!--Pop up-->
               <div class="cd-popup" role="alert">
@@ -116,26 +95,25 @@
                         <div class="row">
                         <div class="col m6 s12">
                           <p class="padding">
-                            <input type="checkbox" id="cuponCheck" />
+                            <input type="checkbox" id="cuponCheck" ng-click="checkBoxChecked()"/>
                             <label for="cuponCheck">Utilizar cupon del mes</label>
                           </p>
                         </div>
                         <div class "col m6 s12">
                           <div class="input-field col m6 s12 añadir codigoP">
-                            <input id="cp" maxlength="5" type="text" class="validate">
-
+                            <input id="cp" autocomplete="off" maxlength="5" type="text" class="validate" ng-model="cp" ng-keyup="validaCp(cp)">
                             <label for="last_name">Códogo Postal</label>
                           </div>
-                          <p class="err-msg">Código postal inválido</p>
-                          <p class="valido-msg">Código postal válido</p>
-                          <p class="no-registrado-msg">Lo sentimos su código postal no está registrado</p>
+                          <p class="err-msg msg">Código postal inválido</p>
+                          <p class="valido-msg msg">Código postal válido</p>
+                          <p class="no-registrado-msg msg">Lo sentimos su código postal no está registrado</p>
                         </div>
                         </div>
                       </form>
                     </div> <!-- cd-popup-container -->
-                    <a href="#0" class="cd-popup-close img-replace">Close</a>
+                    <a ng-click="closePopUp()" class="cd-popup-close img-replace">Close</a>
                     <ul class="cd-buttons row">
-                      <li><a href="#0" class="btnCancAcept col s6">Cancelar</a></li>
+                      <li><a ng-click="closePopUp()" class="btnCancAcept col s6">Cancelar</a></li>
                       <li><a id="obtener" class="btn btn-default col s6">Obtener</a></li>
                       <li><a id="aceptar" style="display: none" class="btnCancAcept col s6">Aceptar</a></li>
                     </ul>
@@ -150,7 +128,6 @@
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/materialize/dist/js/materialize.min.js"></script>
     <script src="../js/index.js"></script>
-    <script src="../js/opciones_mapa.js"></script>
-
+    <!-- <script src="../js/opciones_mapa.js"></script> -->
   </body>
   </html>

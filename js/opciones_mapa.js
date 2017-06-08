@@ -202,6 +202,7 @@ function initMap() {
   marker.addListener('click', function() {
     infowindow.open(map, marker);
   });
+
 }
 
 
@@ -246,7 +247,7 @@ jQuery(document).ready(function($){
     }
   });
   //close popup when clicking the esc keyboard button
-  $(document).keyup(function(event){
+  $(document).keyup(function(event) {
       if(event.which=='27'){
         $('.cd-popup').removeClass('is-visible');
         $('body').css('overflow', 'visible');
@@ -260,5 +261,4 @@ jQuery(document).ready(function($){
 });
 
 /*picker*/
-
 

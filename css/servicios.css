@@ -59,6 +59,9 @@ h3 {
   color: black;
 }
 
+.cd-popup {
+  // height: 1000px;
+}
 .cd-popup .descuento {
   font-size: 20pt;
 }
@@ -127,10 +130,10 @@ h5{
     display: inline-block;
 }
 
-
-/*
-*Pop up
-*/
+// #iniciar-sesion {
+//   width: 400px;
+//   float: right;
+// }
 
 /* https://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
