@@ -69,7 +69,8 @@
                 <div class=""><h3 class="descuento">-{{descuento.descuento}}%</h3></div>
                 <!--Botón para abrir el pop up-->
                 <div class="col s12">
-                  <a id="agendar" class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" ng-click="onClickBotonObtener()"><i class="material-icons right agendar">event</i>Agendar</a>
+                 <a ng-hide="descuentoObtenido()" id="agendar" class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" ng-click="onClickBotonObtener()"><i class="material-icons right agendar">event</i>Agendar</a>
+                  <a ng-show="descuentoObtenido()" class="waves-effect waves-light button-obtener backgroung-green waves-effect waves-light btn cd-popup-trigger" disabled><i class="material-icons right agendar">done</i>Agendado</a>
                 </div>
               </div>
               <!--Descripción del producto o servicio-->
@@ -153,8 +154,8 @@
                     <ul class="cd-buttons row">
 
                       <li><a ng-click="closePopUp()" class="btnCancAcept col s6">Cancelar</a></li>
-                      <li><a id="obtener" class="btn btn-default col s6">Obtener</a></li>
-                       <li><a id="aceptar" style="display: none" class="btnCancAcept col s6">Aceptar</a></li>
+                      <li><a id="obtener" ng-click="obtenerDescuentoOnClick()" class="btn btn-default col s6">Obtener</a></li>
+                       <li><a id="aceptar" ng-click="obtenerDescuentoOnClick()" style="display: none" class="btnCancAcept col s6">Aceptar</a></li>
                     </ul>
                   </div> <!-- cd-popup -->
 

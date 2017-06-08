@@ -8,6 +8,8 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../css/navbar-visitor.css">
 	<link rel="stylesheet" href="../css/registrarse-style.css">
+
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	 <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <!-- Firebase -->
@@ -59,10 +61,8 @@
 			<!-- FORMULARIO REGISTRO -->
 			<form ng-submit="validaFormulario(nombre, correo, pass1, pass2)" name="registro" class="formulario offset-s2 col s8 offset-s2" method="post" accept-charset="utf-8" class="form-group">
 				<h3>Registrarse</h3>
-				<!-- <button class="loginBtn loginBtn--google">
-				  Iniciar Sesión con Google
-				</button>
-				<button class="loginBtn loginBtn--facebook">
+				
+				<!-- <button class="loginBtn loginBtn--facebook">
 				  Iniciar Sesión con Facebook
 				</button> -->
 				<div id='correo-existe' class='form-control err-msg'>Ya existe una cuenta asociada con este correo.</div><br>
@@ -76,6 +76,9 @@
 				<label for="password2">Repite contraseña</label><br>
 				<input id="password2" ng-model="pass2" required type="password" name="password2" value="" placeholder="" class="form-control">
 				<div id='pass-err' class='form-control err-msg'>Las contraseñas no coinciden</div><br>
+				<button ng-click="logInGoogle()" class="loginBtn loginBtn--google">
+				  Iniciar Sesión con Google
+				</button>
 				<button id="enviar" type="submit" class="btn btn-default">Enviar</button><br>
 				<p>¿Ya tienes cuenta? <a href="iniciarSesion.html" title="">Iniciar Sesión</a></p>
 			</form>	

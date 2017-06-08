@@ -94,9 +94,9 @@
 		<nav id="tabs" class="nav-extended">
 			<div class="nav-content">
 		      <ul class="tabs tabs-transparent center-align">
-		        <li class="tab"><a class="active" href="#test1">Productos</a></li>
-		        <li class="tab"><a href="#test2">Servicios</a></li>
-		        <li class="tab"><a href="#test4">Restaurantes</a></li>
+		        <li class="tab"><a class="active" href="#productos">Productos</a></li>
+		        <li class="tab"><a href="#servicios">Servicios</a></li>
+		        <li class="tab"><a href="#restaurantes">Restaurantes</a></li>
 		      </ul>
     		</div>
 		</nav>
@@ -125,7 +125,10 @@
 			          <div class="card">
 
 			            <div class="card-image">
-			              <img ng-src="{{descuento.imagenUrl}}">
+			              <!-- <img class="responsive-img" ng-src="{{descuento.imagenUrl}}"> -->
+			              <div class="image" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+			              	
+			              </div>
 			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
@@ -157,7 +160,7 @@
 
 			            <div class="card-image">
 
-			              <img ng-src="{{descuento.imagenUrl}}">
+			             <div class="image" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
 			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
@@ -195,7 +198,7 @@
 
 			            <div class="card-image">
 
-			              <img ng-src="{{descuento.imagenUrl}}">
+			              <div class="image" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
 			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
@@ -211,7 +214,7 @@
 			        </div>
 
 				</div> <!-- FIn columna 1 -->
-				
+				</div>
 				<!-- Colunma 2 -->
 				<div class="row col s12 m12 l6 columna-2">
 					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
@@ -225,7 +228,7 @@
 
 			            <div class="card-image">
 
-			              <img ng-src="{{descuento.imagenUrl}}">
+			             <div class="image" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
 			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
@@ -262,7 +265,7 @@
 
 			            <div class="card-image">
 
-			              <img ng-src="{{descuento.imagenUrl}}">
+			              <div class="image" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
 			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
@@ -277,7 +280,7 @@
 			          </div>
 			        </div>
 				</div> <!-- FIn columna 1 -->
-				
+				</div>
 				<!-- Colunma 2 -->
 				<div class="row col s12 m12 l6 columna-2">
 					<!-- Se repite las targetas de la mitad de restaurantes con ng-repeat-->
@@ -291,7 +294,7 @@
 
 			            <div class="card-image">
 
-			              <img ng-src="{{descuento.imagenUrl}}">
+			              <div class="image" style="background: url({{descuento.imagenUrl}});-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
 			              <span class="sale">-{{descuento.descuento}}%</span>
 			            </div>
 			        
@@ -306,6 +309,7 @@
 			          </div>
 			        </div>						
 				</div><!-- FIn columna 2 -->
+				</div>
 				<!-- FIN SERVICIOS -->
 			</section>
 

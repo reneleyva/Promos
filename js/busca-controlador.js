@@ -91,6 +91,7 @@ angular
           firebase.auth().signOut();
           sessionStorage.clear();
           window.location.reload(false); 
+          localStorage.clear();
         };
         
     });

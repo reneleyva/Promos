@@ -79,6 +79,67 @@ angular
               err.show();
             }
         };
+
+        /* Evento del boton obtener del popup 
+        * Valida los datos del formulario y si son validos los guarda en la BD. 
+        */
+        $scope.obtenerDescuentoOnClick = function() {
+          if (sessionStorage.getItem('id') !== null) {
+            //Validar form
+            var err = $('.campos-msg');
+            err.hide();
+            var selected = $('#opciones').val();
+            var fecha = $('#fecha').val();
+            var hora = $('#hora').val();
+            var date = new Date(fecha);
+            date.setHours(hora.split(":")[0], hora.split(":")[1]);
+            console.log(date);
+            // console.log("sele: " + selected  + " fecha: " + fecha + " hora: " + hora);
+
+            if (selected === "" | fecha === "" | hora === "") {
+              err.text("Por favor llena todos los campos");
+              err.show('fast');
+            } else if (date.getDay() == 6) {
+              //No abren los domingos
+              err.text("Ningún establecimiento abre los domingos");
+              err.show('fast');
+              
+            } else if (date.getHours() >= 22) {
+              //Muy tarde
+               err.text("Muy tarde para atenderte. Horarios sólo antes de las 10pm");
+              err.show('fast');
+            } else if (date.getHours() < 8) {
+              //Muy temprano
+               err.text("Muy temprano para atenderte. Horarios solo después de las 8am");
+              err.show('fast');
+            } else {
+              //Agendo la cita
+              var db = firebase.database();
+              var ref = db.ref("promos");
+              var citas = ref.child("citas/");
+              citas.push({
+                  idUsuario: sessionStorage.getItem('id'),
+                  nombreUsuario: sessionStorage.getItem('nombre'),
+                  idDescuento: $scope.key,
+                  servicio: selected,
+                  fecha: fecha,
+                  hora: hora
+              });
+
+              localStorage.setItem($scope.key, $('#descuento').data('descuento'));
+              $scope.closePopUp();
+            }
+            
+          } else {
+            
+            location.href = "registrarse.html";
+          }
+        };
+
+
+        $scope.descuentoObtenido = function() {
+          return localStorage.getItem($scope.key) !== null;
+        };
         
         /* Al chechar el checkbox en el pop up 
         *  hace aperecer el input */
@@ -150,6 +211,7 @@ angular
         $scope.logOut = function() {
           firebase.auth().signOut();
           sessionStorage.clear();
+          localStorage.clear();
           window.location.reload(false); 
         };
         

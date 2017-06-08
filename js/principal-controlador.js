@@ -78,6 +78,7 @@ angular
         $scope.logOut = function() {
           firebase.auth().signOut();
           sessionStorage.clear();
+          localStorage.clear();
           window.location.reload(false); 
         };
 

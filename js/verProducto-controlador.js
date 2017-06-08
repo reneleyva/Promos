@@ -36,6 +36,8 @@ angular
         $scope.postales = $firebaseObject(postales);
         //La llave proporcionada en la URL.  
         $scope.key = getKey();
+        //Nombre del usuario si hay
+        $scope.nombre = sessionStorage.nombre;
 
         /* Valida el código postal que se da como argumento
          * @return -1 si no es válido. 
@@ -100,6 +102,19 @@ angular
           $('body').css('overflow', 'hidden');
         };
 
+        /* Evento del boton obtener del popup */
+        $scope.obtenerDescuentoOnClick = function() {
+          if (sessionStorage.getItem('id') !== null) {
+            localStorage.setItem($scope.key, $('#descuento').data('descuento'));
+            $scope.closePopUp();
+          } else {
+            location.href = "registrarse.html";
+          }
+        };
+
+        $scope.descuentoObtenido = function() {
+          return localStorage.getItem($scope.key) !== null;
+        };
         /* Convierte un objeto con llaves en un arreglo
         * de objetos descuentos.
         */
@@ -129,12 +144,12 @@ angular
             }
         };
 
-        //Nombre del usuario si hay
-        $scope.nombre = sessionStorage.nombre;
+        
         /* Sale del sistema */
         $scope.logOut = function() {
           firebase.auth().signOut();
           sessionStorage.clear();
+          localStorage.clear();
           window.location.reload(false); 
         };
     });

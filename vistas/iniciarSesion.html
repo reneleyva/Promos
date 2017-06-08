@@ -9,6 +9,8 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../css/navbar-visitor.css">
 	<link rel="stylesheet" href="../css/registrarse-style.css">
+
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <!-- Firebase -->
@@ -61,12 +63,10 @@
 			<!-- FORMULARIO Inicio -->
 			<form ng-submit="valida(correo, pass)" class="formulario offset-s2 col s8 offset-s2" method="post" accept-charset="utf-8" class="form-group">
 				<h3>Iniciar Sesión</h3>
-				<!-- <button class="loginBtn loginBtn--google">
-				  Iniciar Sesión con Google
-				</button>
-				<button class="loginBtn loginBtn--facebook">
+				
+				<!-- <button class="loginBtn loginBtn--facebook">
 				  Iniciar Sesión con Facebook
-				</button> -->
+				</button>-->
 				<!-- MENSAJE DE ERROR -->
 				<br><div id='correo-err' class='form-control err-msg'>Los datos que ingresaste no coiciden con ninguna cuenta.</div><br>
 				<div class="row col s12">
@@ -82,6 +82,9 @@
 		          		<label for="pass">Contraseña</label>
 		        	</div>
 		      	</div>
+		      	<button ng-click="logInGoogle()" class="loginBtn loginBtn--google">
+				  Iniciar Sesión con Google
+				</button>
 				<button id="enviar" type="submit" class="btn btn-default">Enviar</button><br>
 				<p>¿No tienes cuenta? <a href="registrarse.html" title="">Registrarse</a></p>
 			</form>	
