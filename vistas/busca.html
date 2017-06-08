@@ -21,25 +21,11 @@
 	<script src="../js/busca-controlador.js"></script>
 </head>
 <body ng-controller="busca-controlador as ctrl">
-	<div class="navbar-fixed">
-		<nav>
-			<div class="nav-wrapper">
-				<a href="index.html" class="brand-logo"><img id="logo" src="../img/logo.png"><span>PROMOS</span></a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-				  	<li id="search-icon"><a href="#"><i class="material-icons">search</i></a></li>
-					<li><a href="registrarse.html">Registrarse</a></li>
-		        	<li><a href="#">Iniciar Sesión</a></li>
-				</ul>
-			</div>
-		</nav> <!-- FIN nav -->
-	</div>
-
-	<ul class="side-nav" id="mobile-demo">
-		<li><a href="#">Registrarse</a></li>
-    	<li><a href="#">Iniciar Sesión</a></li>
-    	<li><a href="#"><i class="material-icons white-text">search</i></a></li>
-	</ul>
+	<!--Barra de navegación-->
+    <div ng-include ng-show="nombre" src="'navbar-usuario.html'" onload="finishLoad()">
+  </div>
+  <div ng-include ng-hide="nombre" src="'navbar-visitante.html'" onload="finishLoad()">
+  </div>
 	
 	<div class="container-fluid">
 	
@@ -67,7 +53,7 @@
 					<!-- Se repite las targetas de descuentos con ng-repeat y se filtran-->
 					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
 					<div
-					ng-repeat="descuento in listaFiltrada = (toArray(listaDescuentos) | filter:q:strict)"
+					ng-repeat="descuento in listaFiltradaDesc = (toArray(listaDescuentos) | filter:q:strict)"
 					ng-class="{'small-card col s3': descuento.descuento < 49, 'big-card col s6': descuento.descuento > 49}"
 					ng-click="onClickCardDescuento(descuento.key, 'producto')">
 			          <div class="card">
@@ -90,12 +76,12 @@
 			            <input class="key" type="text" value="" hidden>
 			          </div>
 			        </div>
-			        <h4 ng-hide="listaFiltrada.length" class="center-align grey-text">Ningún resultado encontrado :(</h4>
+			        
 					
 					<!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
 					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
 					<div
-					ng-repeat="descuento in toArray(listaServicios) | filter:q"
+					ng-repeat="descuento in listaFiltradaServ = (toArray(listaServicios) | filter:q)"
 					ng-class="{'small-card col s3': descuento.descuento < 49, 'big-card col s6': descuento.descuento > 49}"
 					ng-click="onClickCardDescuento(descuento.key, 'servicio')">
 			          <div class="card">
@@ -122,7 +108,7 @@
 			        <!-- Se repite las targetas de la mitad de descuentos con ng-repeat-->
 					<!-- Si el descuento es mayor a 50 es una targeta grande en ng-class -->
 					<div
-					ng-repeat="descuento in toArray(listaRestaurantes) | filter:q"
+					ng-repeat="descuento in listaFiltradaRest = (toArray(listaRestaurantes) | filter:q)"
 					ng-class="{'small-card col s3': descuento.descuento < 49, 'big-card col s6': descuento.descuento > 49}"
 					ng-click="onClickCardDescuento(descuento.key, 'restaurante')">
 			          <div class="card">
@@ -145,6 +131,8 @@
 			            <input class="key" type="text" value="" hidden>
 			          </div>
 			        </div>
+
+			        <h4 ng-hide="listaFiltradaDesc.length+listaFiltradaServ.length+listaFiltradaRest.length" class="center-align grey-text">Ningún resultado encontrado :(</h4>
 
 
 				<!-- FIN Productos -->

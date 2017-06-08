@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="iniciar-app">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Registrarse</title>
+	<title>Iniciar Sesión</title>
 	<link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../css/navbar-visitor.css">
 	<link rel="stylesheet" href="../css/registrarse-style.css">
+	<!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+    <!-- Controlador -->
+    <script type="text/javascript" src="../js/iniciar-controlador.js"></script>
 </head>
-<body>
+<body ng-controller="iniciar-controlador as ctrl">
 	<div class="navbar-fixed">
 		<nav>
 			<div class="nav-wrapper">
@@ -36,10 +44,10 @@
 		
 		<div class="search row">
 			<div class="hide-on-med-and-down col l12">
-				<form  method="GET">
+				<form  action="busca.html" method="GET">
 					<div class="input-field">
 						 <i class="material-icons prefix">search</i>
-		          		<input id="icon_prefix" type="text" class="validate" placeholder="Buscar...">
+		          		<input id="search" name="q" type="text" class="validate" placeholder="Buscar...">
 		          		<input type="submit" hidden name="" value="LOL">
 					</div>
 				</form>
@@ -51,26 +59,26 @@
 	<div class="container">
 		<div class="row">
 			<!-- FORMULARIO Inicio -->
-			<form action="" class="formulario offset-s2 col s8 offset-s2" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
+			<form ng-submit="valida(correo, pass)" class="formulario offset-s2 col s8 offset-s2" method="post" accept-charset="utf-8" class="form-group">
 				<h3>Iniciar Sesión</h3>
-				<button class="loginBtn loginBtn--google">
+				<!-- <button class="loginBtn loginBtn--google">
 				  Iniciar Sesión con Google
 				</button>
 				<button class="loginBtn loginBtn--facebook">
 				  Iniciar Sesión con Facebook
-				</button>
+				</button> -->
 				<!-- MENSAJE DE ERROR -->
-				<br><div id='correo-existe' class='form-control err-msg'>Error.</div><br>
+				<br><div id='correo-err' class='form-control err-msg'>Los datos que ingresaste no coiciden con ninguna cuenta.</div><br>
 				<div class="row col s12">
 	        		<div class="input-field ">
-		        		<input id="correo" type="email" class="validate">
+		        		<input id="correo" required ng-model="correo" name="correo" type="email" class="validate">
 		          		<label for="correo">Correo</label>
 		        	</div>
 		      	</div>
 				
 				<div class="row col s12">
 	        		<div class="input-field ">
-		        		<input id="pass" type="password" class="validate">
+		        		<input id="pass" required ng-model="pass" name="pass" type="password" class="validate">
 		          		<label for="pass">Contraseña</label>
 		        	</div>
 		      	</div>

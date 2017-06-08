@@ -21,19 +21,17 @@ function getKey() {
   firebase.initializeApp(config);
 
 angular
-    .module('verServicio-app', ['firebase'])
-    .controller('verServicio-controlador', function($scope, $firebaseObject){
+    .module('verRestaurante-app', ['firebase'])
+    .controller('verRestaurante-controlador', function($scope, $firebaseObject){
         //La base de datos principal
         const rootRef = firebase.database().ref().child('promos');
-        //La subbase servicios
-        const servicios = rootRef.child('servicios'); 
         //La subbase restaurantes
         const restaurantes = rootRef.child('restaurantes');   
         //La subbase postales
         const postales = rootRef.child('postales');  
 
-        //Lista de descuentos desde firebase      
-        $scope.listaServicios = $firebaseObject(servicios);
+        //Lista de rest desde firebase      
+        $scope.listaRestaurantes = $firebaseObject(restaurantes);
         //Lista de descuentos desde firebase      
         $scope.postales = $firebaseObject(postales);
         //La llave proporcionada en la URL.  

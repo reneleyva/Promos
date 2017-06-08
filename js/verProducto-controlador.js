@@ -112,6 +112,31 @@ angular
           return result;
         };
         
+        /* Oculta y muestra la bbara de busqueda */
+         var flag = false;
+        $scope.searchToggle = function() {
+          if (flag) {
+              //lo oculto
+              $(this).find('i').text('search');
+              $('.search').slideUp('fast');
+              flag = false;
+            } else {
+              //Lo muestro
+              $(this).find('i').text('clear')
+              $('.search').slideDown('fast');
+              $('.search').find('input[type="text"]').focus();
+              flag = true;
+            }
+        };
+
+        //Nombre del usuario si hay
+        $scope.nombre = sessionStorage.nombre;
+        /* Sale del sistema */
+        $scope.logOut = function() {
+          firebase.auth().signOut();
+          sessionStorage.clear();
+          window.location.reload(false); 
+        };
     });
 }());
 

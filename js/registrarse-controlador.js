@@ -1,9 +1,4 @@
-/* Controlador para verPrducto
- * Agrega los datos necesarios a las vistas. 
- */
-
-
- /* Función IFFE para el controlador*/
+/* Función IFFE para el controlador*/
 (function() {
   // Initialize Firebase
   var config = {
@@ -15,13 +10,13 @@
     messagingSenderId: "258104913182"
   };
   firebase.initializeApp(config);
+
   const auth = firebase.auth(); //Para autenticar
-  //REAL TIME
+
+  //IMprime en consola el usuario actual logeado
   auth.onAuthStateChanged( firebaseUser => {
     if(firebaseUser) {
       console.log(firebaseUser);
-      // sessionStorage.id = firebaseUser.uid;
-      // sessionStorage.nombre = 
     } else {
       console.log("No logeado");
     }
@@ -31,6 +26,7 @@ angular
     .module('registrarse-app', ['firebase'])
     .controller('registrarse-controlador', function($scope, $firebaseObject){
 
+      /* Funcion para validar formulario de registro */
       $scope.validaFormulario = function(nombre, correo, pass1, pass2) {
 
           var passError = $('#pass-err');
@@ -39,23 +35,26 @@ angular
           correoError.hide();
           if (pass1.length < 6 | pass2 < 6) {
             passError.text('La contraseña debe de ser por lo menos 6 caractares');
-            passError.show();
+            passError.show('fast');
           } else if (pass1 !== pass2) {
             passError.text('Las contraseñas no coiciden');
-            passError.show();
+            passError.show('fast');
           } else {
+            //Sin errores guardo nuevo usuario
             $scope.guardaNuevoUsuario(correo, pass1, nombre);
           }
 
 
         };
 
+        /* Función para guardar nuevo usaurio */
         $scope.guardaNuevoUsuario = function(email, pass, nombre) {
           
           const promise = auth.createUserWithEmailAndPassword(email, pass)
             .then(function (user) {
               //Exito registrando el usuario
              var usersRef = firebase.database().ref('promos').child('usuarios');
+             //Guardo en un registro aparte con nombre y id. 
               usersRef.push({
                 id: user.uid,
                 correo: user.email,
@@ -73,7 +72,7 @@ angular
                 var errorMessage = error.message;
 
                 if (errorCode === 'auth/email-already-in-use') {
-                  $('#correo-existe').show();
+                  $('#correo-existe').show('fast');
                 }
                 console.log(errorCode);
           });
@@ -82,6 +81,7 @@ angular
           
         };
 
+        /* Inicia sesión maybe */
         $scope.iniciaSesion = function(email, pass) {
           const promise = auth.signInWithEmailAndPassword(email, pass);
         };

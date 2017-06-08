@@ -21,32 +21,11 @@
 	<script src="../js/principal-controlador.js"></script>
 </head>
 <body ng-controller="MyCtrl as ctrl">
-      <!-- <pre>
-{{ ctrl.object | json }}
-      </pre> -->
-      <!-- <p ng-repeat="descuento in toArray(listaDescuentos) | limitTo: toArray(lista).length/2">
-      	{{descuento.titulo}}
-      </p> -->
-	<div class="navbar-fixed">
-		<nav>
-			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo"><img id="logo" src="../img/logo.png"><span>PROMOS</span></a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-				  	<li id="search-icon"><a href="#"><i class="material-icons">search</i></a></li>
-					<li><a href="registrarse.html">Registrarse</a></li>
-		        	<li><a href="#">Iniciar Sesión</a></li>
-				</ul>
-			</div>
-		</nav> <!-- FIN nav -->
+	<div ng-include ng-show="nombre" src="'navbar-usuario.html'" onload="finishLoad()">
+	</div>
+	<div ng-include ng-hide="nombre" src="'navbar-visitante.html'" onload="finishLoad()">
 	</div>
 
-	<ul class="side-nav" id="mobile-demo">
-		<li><a href="#">Registrarse</a></li>
-    	<li><a href="#">Iniciar Sesión</a></li>
-    	<li><a href="#"><i class="material-icons white-text">search</i></a></li>
-	</ul>
-	
 	<div class="container-fluid">
 	
 	<!-- Barra de busqueda -->
@@ -73,7 +52,7 @@
 						<h1>-50% de Descuento</h1>
 					</div>
 				      <div class="row">
-				      	<a href="verProductos.html?key=-KlsXhAe2nYDO92WTDCf" class="btn btn-default">Ver Descuento</a>
+				      	<a href="verProducto.html?key=-KlsXhAe2nYDO92WTDCf" class="btn btn-default">Ver Descuento</a>
 				      </div>
 				      
 				</div>
@@ -87,7 +66,7 @@
 						<h1>-40% de Descuento</h1>
 					</div>
 				      <div class="row">
-				      	<a href="verServicios.html?key=-KlsYjcS7goeoYy2HmZ-" class="btn btn-default">Ver Descuento</a>
+				      	<a href="verServicio.html?key=-KlsYjcS7goeoYy2HmZ-" class="btn btn-default">Ver Descuento</a>
 				      </div>
 				      
 				</div>
@@ -103,7 +82,7 @@
 						<h1>-60% de Descuento</h1>
 					</div>
 				      <div class="row">
-				      	<a href="verProductos.html?key=-KlsZRwWNxGzo61j3yU9" class="btn btn-default">Ver Descuento</a>
+				      	<a href="verProducto.html?key=-KlsZRwWNxGzo61j3yU9" class="btn btn-default">Ver Descuento</a>
 				      </div>
 				      
 				</div>
@@ -277,7 +256,7 @@
 					<div
 					ng-repeat="descuento in toArray(listaRestaurantes) | limitTo: toArray(listaRestaurantes).length/2"
 					ng-class="{'small-card col s6': descuento.descuento < 49, 'big-card col s12': descuento.descuento > 49}"
-					ng-click="onClickCardDescuento(descuento.key, 'servicio')">
+					ng-click="onClickCardDescuento(descuento.key, 'restaurante')">
 
 			          <div class="card">
 
@@ -306,7 +285,7 @@
 					<div
 					ng-repeat="descuento in toArray(listaRestaurantes) | limitTo: (toArray(listaRestaurantes).length/2 - toArray(listaRestaurantes).length)"
 					ng-class="{'small-card col s6': descuento.descuento < 49, 'big-card col s12': descuento.descuento > 49}"
-					ng-click="onClickCardDescuento(descuento.key, 'servicio')">
+					ng-click="onClickCardDescuento(descuento.key, 'restaurante')">
 
 			          <div class="card">
 

@@ -47,10 +47,12 @@ angular
          * @param el key o id del descuento en la base de dtaos
         */
         $scope.onClickCardDescuento = function(key, tipo) {
-          if (tipo === "producto")
+           if (tipo === "producto")
             location.href = "verProducto.html?key="+key;
-          else 
+          else if (tipo === "servicio")
             location.href = "verServicio.html?key="+key;
+          else 
+            location.href = "verRestaurante.html?key="+key;
         };
 
         /* Convierte un objeto con llaves en un arreglo
@@ -63,6 +65,32 @@ angular
               result.push(value);
           });
           return result;
+        };
+
+        /* Oculta y muestra la bbara de busqueda */
+         var flag = false;
+        $scope.searchToggle = function() {
+          if (flag) {
+              //lo oculto
+              $(this).find('i').text('search');
+              $('.search').slideUp('fast');
+              flag = false;
+            } else {
+              //Lo muestro
+              $(this).find('i').text('clear')
+              $('.search').slideDown('fast');
+              $('.search').find('input[type="text"]').focus();
+              flag = true;
+            }
+        };
+
+        //Nombre del usuario si hay
+        $scope.nombre = sessionStorage.nombre;
+        /* Sale del sistema */
+        $scope.logOut = function() {
+          firebase.auth().signOut();
+          sessionStorage.clear();
+          window.location.reload(false); 
         };
         
     });
