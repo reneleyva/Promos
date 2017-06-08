@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="registrarse-app">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +8,16 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../css/navbar-visitor.css">
 	<link rel="stylesheet" href="../css/registrarse-style.css">
+	 <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+    <!-- Controlador -->
+    <script type="text/javascript" src="../js/registrarse-controlador.js"></script>
 </head>
-<body>
+<body ng-controller="registrarse-controlador as ctrl">
 	<div class="navbar-fixed">
 		<nav>
 			<div class="nav-wrapper">
@@ -34,10 +42,10 @@
 	<div class="container-fluid">
 		<div class="search row">
 			<div class="hide-on-med-and-down col l12">
-				<form  method="GET">
+				<form  action="busca.html" method="GET">
 					<div class="input-field">
 						 <i class="material-icons prefix">search</i>
-		          		<input id="icon_prefix" type="text" class="validate" placeholder="Buscar...">
+		          		<input id="search" name="q" type="text" class="validate" placeholder="Buscar...">
 		          		<input type="submit" hidden name="" value="LOL">
 					</div>
 				</form>
@@ -49,26 +57,27 @@
 	<div class="container">
 		<div class="row">
 			<!-- FORMULARIO REGISTRO -->
-			<form action="" class="formulario offset-s2 col s8 offset-s2" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
+			<form ng-submit="validaFormulario(nombre, correo, pass1, pass2)" name="registro" class="formulario offset-s2 col s8 offset-s2" method="post" accept-charset="utf-8" class="form-group">
 				<h3>Registrarse</h3>
-				<button class="loginBtn loginBtn--google">
+				<!-- <button class="loginBtn loginBtn--google">
 				  Iniciar Sesión con Google
 				</button>
 				<button class="loginBtn loginBtn--facebook">
 				  Iniciar Sesión con Facebook
-				</button>
+				</button> -->
 				<div id='correo-existe' class='form-control err-msg'>Ya existe una cuenta asociada con este correo.</div><br>
 				<label for="nombre">Nombre</label>
-				<input id="nombre" required type="text" name="nombre" placeholder="John Doe" class="form-control">
+				<input id="nombre" ng-model="nombre" required type="text" name="nombre" placeholder="John Doe" class="form-control">
 				<label for="correo">Correo</label><br>
-				<input id="correo" required type="email" name="correo" placeholder="john@mail.com" class="form-control">
+				<input id="correo" ng-model="correo" required type="email" name="correo" placeholder="john@mail.com" class="form-control">
 
 			    <br><label for="password">Contraseña</label><br>
-				<input id="password" required type="password" name="password" value="" placeholder="" class="form-control">
+				<input id="password" ng-model="pass1" required type="password" name="password" value="" placeholder="" class="form-control">
 				<label for="password2">Repite contraseña</label><br>
-				<input id="password2" required type="password" name="password2" value="" placeholder="" class="form-control">
+				<input id="password2" ng-model="pass2" required type="password" name="password2" value="" placeholder="" class="form-control">
+				<div id='pass-err' class='form-control err-msg'>Las contraseñas no coinciden</div><br>
 				<button id="enviar" type="submit" class="btn btn-default">Enviar</button><br>
-				<p>¿Ya tienes cuenta? <a href="iniciarSesion.htmlSesion" title="">Iniciar Sesión</a></p>
+				<p>¿Ya tienes cuenta? <a href="iniciarSesion.html" title="">Iniciar Sesión</a></p>
 			</form>	
 		</div>
 	</div>
