@@ -21,7 +21,7 @@
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
-        <script type="text/javascript" src="../Controladores/descuentosAdq.js"></script>
+        <script type="text/javascript" src="../js/descuentosAdq.js"></script>
  <!--   <script type="text/javascript" src="../Servicios/descuentosAdquiridosServ.js"></script>
   
 	<script type="text/javascript" src="../Controladores/descuentosAdquiridosCtrl.js"></script>
@@ -71,20 +71,15 @@
               <p id="descripcion" class ="fi">
                 {{objeto.descripcion}}
               </p>
-              <!--Carrusel del producto o servicio-->
-              <div class="imagenExtra row">
-                <img class="responsive-img" ng-src="{{descuento.imagenComida}}">
-              </div>
-              
-              <!--Mapa del servicio-->
-              <!-- <div id="map"></div> -->
+            
+            
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="container" 
-        ng-repeat="objeto in listaCitas"
+        ng-repeat="objeto in toArray(listaCitas)"
         ng-if="estaObjeto(objeto)"
         >
 
@@ -99,10 +94,10 @@
               <!--Titulo del producto o servicio-->
               <div class=""><h3 class="titulo">{{objeto.servicio}}</h3></div>
              
-             
-            
               <!--Botón para abrir el pop up-->
-      
+                <div class="col s12">
+                  <a class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" ng-click="cancelar(objeto)"><i class="material-icons right ">delete</i>Cancelar</a>
+                </div>
             </div>
             <!--Descripción del producto o servicio-->
             <h5>Descripcion:</h5>
@@ -113,89 +108,13 @@
               <br/>
               Horario de la Cita :{{objeto.hora}}
             </p>
-            <!--Carrusel del producto o servicio-->
-            <div class="imagenExtra row">
-              <img class="responsive-img" ng-src="{{descuento.imagenComida}}">
-            </div>
             
-            <!--Mapa del servicio-->
-            <!-- <div id="map"></div> -->
           </div>
         </div>
       </div>
     </div>
     </div>
-     <!--Pop up-->
-              <div class="cd-popup" role="alert" ng-repeat="descuento in toArray(listaServicios) | filter:key:strict">
-                <div class="cd-popup-container">
-                  <div class="banda">
-                    <div class="pop-contenedor">
-                      <!-- <img class="img-producto imagen-servicio imagen-servicio-popup z-depth-3 responsive-img" src="../img/audifonos.jpg"> -->
-                    <div class="row grid-elementos grid-elementos-pop">
-                      <!--Titulo del producto o servicio-->
-                      <!-- <h3 class="titulo">Audifonos</h3> -->
-                    </div>
-                    </div>
-                  </div>
-                  <div class="row contenedor-form">
-                  <h3 class="titulo">{{descuento.titulo}}</h3>
-                  <div class="row">
-                    <p class="campos-msg" style="color: red;display: none;"><b>Por favor llena todos los campos</b></p>
-                  </div>
-                  
-                      <form class="col s12 formulario">
-
-                        
-                        <div class="row">
-                          <div class="col s12">
-                                <select id="opciones" data-opciones="{{descuento.opciones}}">
-                                <option value="" disabled selected>Escoge una opción</option>                           
-                                </select>
-                                <label>Servicio</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="input-field col m6 s12">
-                            <input required id="fecha" type="date" class="fecha">
-                            <label class="active" for="last_name">Fecha</label>
-                          </div>
-                          <div class="input-field col m6 s12">
-                              <input required id="hora" type="time" >
-                              <label class="active" for="last_name">hora</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                        <div class="col m6 s12">
-                          <p class="padding">
-                            <input type="checkbox" id="cuponCheck" ng-click="checkBoxChecked()"/>
-                            <label for="cuponCheck">Utilizar cupon del mes</label>
-                          </p>
-                        </div>
-                        <div class "col m6 s12">
-                          <div class="input-field col m6 s12 añadir codigoP">
-                            <input id="cp" autocomplete="off" maxlength="5" type="text" class="validate" ng-model="cp" ng-keyup="validaCp(cp)">
-                            <label for="last_name">Códogo Postal</label>
-                          </div>
-                          <p class="err-msg msg">Código postal inválido</p>
-                          <p class="valido-msg msg">Código postal válido</p>
-                          <p class="no-registrado-msg msg">Lo sentimos su código postal no está registrado</p>
-                        </div>
-                        </div>
-                      </form>
-                    </div> <!-- cd-popup-container -->
-                    <a ng-click="closePopUp()" class="cd-popup-close img-replace">Close</a>
-
-                    <ul class="cd-buttons row">
-
-                      <li><a ng-click="closePopUp()" class="btnCancAcept col s6">Cancelar</a></li>
-                      <li><a id="obtener" ng-click="obtenerDescuentoOnClick()" class="btn btn-default col s6">Obtener</a></li>
-                       <li><a id="aceptar" ng-click="obtenerDescuentoOnClick()" style="display: none" class="btnCancAcept col s6">Aceptar</a></li>
-                    </ul>
-                  </div> <!-- cd-popup -->
-
-    
-
-
+  
        
 
     <!-- SCRIPTS -->

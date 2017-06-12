@@ -36,6 +36,7 @@ angular
         $scope.postales = $firebaseObject(postales);
         //La llave proporcionada en la URL.  
         $scope.key = getKey();
+        const objeto = $firebaseObject(restaurantes.child($scope.key));
 
         /* Valida el código postal que se da como argumento
          * @return -1 si no es válido. 
@@ -118,9 +119,11 @@ angular
               var ref = db.ref("promos");
               var citas = ref.child("citas/");
               citas.push({
-                  idUsuario: sessionStorage.getItem('id'),
+                   usuarioID: sessionStorage.getItem('id'),
+                  descuentoID: $scope.key,
+                  imagen : objeto.imagenUrl,
+                  descripcion : objeto.descripcion,
                   nombreUsuario: sessionStorage.getItem('nombre'),
-                  idDescuento: $scope.key,
                   servicio: selected,
                   fecha: fecha,
                   hora: hora
