@@ -49,7 +49,7 @@
           <div class="card-panel">
             <div class = "container-card">
               <!--Imagen del produto o servicio-->
-              <img  class="imagen-servicio z-depth-3 responsive-img img-producto" ng-src="{{descuento.imagenUrl}}">
+              <img class="imagen-servicio z-depth-3 responsive-img img-producto" ng-src="{{descuento.imagenUrl}}">
               <!--Botón de redes sociales-->
               <div class="row grid-elementos">
                 <!--Titulo del producto o servicio-->
@@ -59,14 +59,14 @@
                 <div id="descuento" data-descuento="{{descuento.descuento}}" class="col s12 m6"><h3 class="descuento">-{{descuento.descuento}}%</h3></div>
                 <!--Botón para abrir el pop up-->
                 <div class="col s12">
-                  <a ng-hide="descuentoObtenido()" class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" ng-click="onClickBotonObtener()"><i class="material-icons right agendar">event</i>Obtener</a>
+                  <a ng-hide="descuentoObtenido()" class="waves-effect waves-light button-obtener waves-effect waves-light btn cd-popup-trigger" ng-click="onClickBotonObtener(descuento)"><i class="material-icons right agendar">event</i>Obtener</a>
                   <a ng-show="descuentoObtenido()" class="waves-effect waves-light button-obtener backgroung-green waves-effect waves-light btn cd-popup-trigger" disabled><i class="material-icons right agendar">done</i>Obtenido</a>
                 </div>
               </div>
               <!--Descripción del producto o servicio-->
               <h5>Descripcion:</h5>
               <p id="descripcion" class ="fi">
-                {{descuento.descripcion}}
+                {{descuento.descripcion}}              
               </p>
              
             </div>
@@ -116,7 +116,6 @@
                     </ul>
                   </div> <!-- cd-popup -->
 
-    
 
 
        

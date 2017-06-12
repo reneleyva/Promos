@@ -31,6 +31,7 @@ angular
         //Lista de restaurantes desde firebase      
         $scope.listaRestaurantes = $firebaseObject(restaurantes);
 
+        console.log($scope.listaRestaurantes);
 
         /* Funcion para evento cuando hagan click en algún descuento 
          * @param el key o id del descuento en la base de dtaos
@@ -81,7 +82,12 @@ angular
           localStorage.clear();
           window.location.reload(false); 
         };
+        $scope.carritoCompras = function() {
+          console.log("Carrito de  compras");
 
+          location.href = "verDescuentosAdquiridos.html";
+
+        };
         /* Regresa True si el usuario ha iniciado sesión */
         $scope.userLogedIn = function() {
           return (typeof sessionStorage.id == 'undefined');

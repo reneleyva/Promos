@@ -204,7 +204,11 @@ angular
               flag = true;
             }
         };
+        $scope.carritoCompras = function() {
 
+          location.href = "verDescuentosAdquiridos.html";
+
+        };
         //Nombre del usuario si hay
         $scope.nombre = sessionStorage.nombre;
         /* Sale del sistema */

@@ -28,16 +28,24 @@ angular
         //La subbase descuentos
         const descuentos = rootRef.child('descuentos');  
         //La subbase postales
-        const postales = rootRef.child('postales');  
-
+        const postales = rootRef.child('postales'); 
+        // La subbase de Descuentos Usuario
+        const descuentosObtenidos = rootRef.child('DescuentosUsuarios');  
+        //Lista de descuentos Obtenidos por el usuario desde firebase
+        $scope.descuentosObt = $firebaseObject(descuentosObtenidos);
         //Lista de descuentos desde firebase      
         $scope.listaDescuentos = $firebaseObject(descuentos);
         //Lista de codigos postales desde firebase      
         $scope.postales = $firebaseObject(postales);
         //La llave proporcionada en la URL.  
         $scope.key = getKey();
+        const objeto = $firebaseObject(descuentos.child($scope.key));
+        //console.log($scope.objeto);
+        
+        //$scope.descuento = {};
         //Nombre del usuario si hay
         $scope.nombre = sessionStorage.nombre;
+
 
         /* Valida el código postal que se da como argumento
          * @return -1 si no es válido. 
@@ -103,9 +111,19 @@ angular
         };
 
         /* Evento del boton obtener del popup */
-        $scope.obtenerDescuentoOnClick = function() {
+        $scope.obtenerDescuentoOnClick = function(descuento) {
           if (sessionStorage.getItem('id') !== null) {
-            localStorage.setItem($scope.key, $('#descuento').data('descuento'));
+            //localStorage.setItem($scope.key, $('#descuento').data('descuento'));
+            //console.log( $('#descuento').data('descuento'));
+            //console.log($scope.descuento);
+            descuentosObtenidos.push(
+              {productoID : $scope.key, 
+              descuento :  $('#descuento').data('descuento'),
+              usuarioID : sessionStorage.id,
+              titulo : objeto.titulo,
+              descripcion : objeto.descripcion,
+              imagen : objeto.imagenUrl
+            });
             $scope.closePopUp();
           } else {
             location.href = "registrarse.html";
@@ -113,8 +131,25 @@ angular
         };
 
         $scope.descuentoObtenido = function() {
-          return localStorage.getItem($scope.key) !== null;
-        };
+          //return localStorage.getItem($scope.key) !== null;
+          var flag = false;
+          var listaObjetos = [];
+          angular.forEach($scope.descuentosObt, function(value, key) {
+            
+              //console.log(value.productoID + value.usuarioID);
+            if(value.usuarioID == sessionStorage.id ){
+               listaObjetos.push(value);
+              if (value.productoID == $scope.key) {
+                flag = true;
+              }
+              //console.log(listaObjetos);
+            } 
+            sessionStorage.objetos = listaObjetos; 
+          });
+
+          return flag;
+    
+      };
         /* Convierte un objeto con llaves en un arreglo
         * de objetos descuentos.
         */
@@ -144,7 +179,11 @@ angular
             }
         };
 
-        
+         $scope.carritoCompras = function() {
+
+          location.href = "verDescuentosAdquiridos.html";
+
+        };
         /* Sale del sistema */
         $scope.logOut = function() {
           firebase.auth().signOut();

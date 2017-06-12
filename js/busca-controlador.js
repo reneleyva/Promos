@@ -94,6 +94,11 @@ angular
           localStorage.clear();
         };
         
+        $scope.carritoCompras = function() {
+
+          location.href = "verDescuentosAdquiridos.html";
+
+        }; 
     });
 }());
 

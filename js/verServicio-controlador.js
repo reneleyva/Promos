@@ -38,6 +38,7 @@ angular
         $scope.postales = $firebaseObject(postales);
         //La llave proporcionada en la URL.  
         $scope.key = getKey();
+        const objeto = $firebaseObject(servicios.child($scope.key));
 
         /* Valida el código postal que se da como argumento
          * @return -1 si no es válido. 
@@ -120,8 +121,10 @@ angular
               var ref = db.ref("promos");
               var citas = ref.child("citas/");
               citas.push({
-                  idUsuario: sessionStorage.getItem('id'),
-                  idDescuento: $scope.key,
+                  usuarioID: sessionStorage.getItem('id'),
+                  descuentoID: $scope.key,
+                  imagen : objeto.imagenUrl,
+                  descripcion : objeto.descripcion,
                   nombreUsuario: sessionStorage.getItem('nombre'),
                   servicio: selected,
                   fecha: fecha,
@@ -204,6 +207,11 @@ angular
               $('.search').find('input[type="text"]').focus();
               flag = true;
             }
+        };
+         $scope.carritoCompras = function() {
+
+          location.href = "verDescuentosAdquiridos.html";
+
         };
 
         //Nombre del usuario si hay
